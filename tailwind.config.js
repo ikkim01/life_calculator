@@ -4,12 +4,19 @@ module.exports = {
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
- 
+
     // Or if using `src` directory:
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        mainBlue: "#30A2FF",
+        secondSky: "#00C4FF",
+        thirdSand: "#FFE7A0",
+        fourthYellow: "#FFF5B8",
+      },
+    },
   },
   plugins: [],
-}
+};
