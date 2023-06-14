@@ -1,3 +1,45 @@
+@import url("https://fonts.googleapis.com/css2?family=Gaegu:wght@300;400;700&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+  font-family: "Gaegu", cursive;
+  font-size: 19px;
+  font-weight: 700;
+}
+
+.button {
+  position: relative;
+  font-size: 16px;
+  transition-duration: 0.6s;
+  -webkit-transition-duration: 0.6s; /* Safari */
+}
+
+.button:after {
+  content: "";
+  display: block;
+  position: absolute;
+  border-radius: 9999px;
+  left: 50%;
+  top: 32%;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  transition: all 0.5s;
+  box-shadow: 0 0 5px 35px #00c4ff;
+}
+
+.button:active:after {
+  box-shadow: 0 0 0 0 #00c4ff;
+  position: absolute;
+  border-radius: 9999px;
+  left: 50%;
+  top: 32%;
+  opacity: 1;
+  transition: 0s;
+}
+
+.button:active {
+  top: 1px;
+}

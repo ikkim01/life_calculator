@@ -1,6 +1,7 @@
 import { create } from "zustand";
+import { setCookie } from "../../components/Function";
 
-interface tabType {
+export interface tabType {
   favoriteTab: string[];
   setFavoriteTab: (tabArr: string[]) => void;
   handleFavoriteTab: (tabName: string) => void;
@@ -15,6 +16,8 @@ const useFavoriteTab = create<tabType>((set) => ({
       copyArr.includes(tabName)
         ? copyArr.splice(copyArr.indexOf(tabName), 1)
         : copyArr.push(tabName);
+
+      setCookie("favorite", String(copyArr), 43200);
 
       return { favoriteTab: copyArr };
     }),

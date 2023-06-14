@@ -1,28 +1,13 @@
-import React, { useEffect } from "react";
+import React from "react";
 import MENU from "../utils/data/MENU";
-import useFavoriteTab from "../utils/zustand/useFavoriteTab";
 
-const FavoriteTab = () => {
-  const { favoriteTab, setFavoriteTab } = useFavoriteTab();
+interface propsType {
+  favoriteTab: string[];
+  handleFavoriteTabIndex: (event: React.MouseEvent<HTMLButtonElement>) => void;
+}
 
-  useEffect(() => {
-    const cookieArr = document.cookie.split(";").map((cookie) => {
-      const key = cookie.split("=")[0].trim();
-      const value = cookie.split("=")[1].trim();
-
-      return { key, value };
-    });
-
-    if (cookieArr.length !== 0) {
-      const findCookie = cookieArr.find((cookie) => cookie.key === "favorite");
-
-      findCookie.value && setFavoriteTab(findCookie.value.split(","));
-    }
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  console.log(favoriteTab);
+const FavoriteTab = (props: propsType) => {
+  const { favoriteTab, handleFavoriteTabIndex } = props;
 
   return (
     <aside className="flex flex-col space-y-1 w-full px-3">
@@ -30,16 +15,69 @@ const FavoriteTab = () => {
         favoriteTab.map((favorite) => {
           const findMenu = MENU.find((menu) => menu.key === Number(favorite));
           return (
-            <button
+            <article
               key={findMenu.key}
-              className="border w-full py-3 rounded-lg"
+              className="border w-full rounded-lg relative flex items-center"
             >
-              {findMenu.heading}
-            </button>
+              <button className="w-full text-start h-full px-5 py-3 text-grey rounded-lg bg-white">
+                {findMenu.heading}
+              </button>
+              <button
+                className="absolute right-5"
+                onClick={handleFavoriteTabIndex}
+                name={String(findMenu.key)}
+              >
+                <svg
+                  width="18px"
+                  height="27px"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M10 12V17"
+                    stroke="#041C32"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <path
+                    d="M14 12V17"
+                    stroke="#041C32"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <path
+                    d="M4 7H20"
+                    stroke="#041C32"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <path
+                    d="M6 10V18C6 19.6569 7.34315 21 9 21H15C16.6569 21 18 19.6569 18 18V10"
+                    stroke="#041C32"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <path
+                    d="M9 5C9 3.89543 9.89543 3 11 3H13C14.1046 3 15 3.89543 15 5V7H9V5Z"
+                    stroke="#041C32"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </button>
+            </article>
           );
         })
       ) : (
-        <p>즐겨찾기를 추가해주세요.</p>
+        <div className="flex justify-center items-center h-[270px]">
+          <p className="px-5 py-3">즐겨찾기에 추가된 항목이 없습니다.</p>
+        </div>
       )}
     </aside>
   );
