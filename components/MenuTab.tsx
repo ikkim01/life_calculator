@@ -1,13 +1,15 @@
+import { useRouter } from "next/router";
 import React from "react";
 import MENU from "../utils/data/MENU";
 
 interface propsType {
   favoriteTab: string[];
   handleFavoriteTabIndex: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  changeRouting: (address: string) => void;
 }
 
 const MenuTab = (props: propsType) => {
-  const { favoriteTab, handleFavoriteTabIndex } = props;
+  const { favoriteTab, handleFavoriteTabIndex, changeRouting } = props;
 
   return (
     <aside className="flex flex-col space-y-1 w-full px-3">
@@ -16,7 +18,10 @@ const MenuTab = (props: propsType) => {
           key={menu.key}
           className="border w-full rounded-lg relative flex items-center"
         >
-          <button className="w-full text-start h-full px-5 py-3  text-grey rounded-lg bg-white">
+          <button
+            className="w-full text-start h-full px-5 py-3  text-grey rounded-lg bg-white"
+            onClick={() => changeRouting(menu.address)}
+          >
             {menu.heading}
           </button>
           <button

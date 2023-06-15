@@ -1,4 +1,6 @@
+import { useRouter } from "next/router";
 import React, { useEffect, useRef } from "react";
+import MENU from "../utils/data/MENU";
 import useFavoriteTab from "../utils/zustand/useFavoriteTab";
 import useHandleMenu from "../utils/zustand/useHandleMenu";
 import FavoriteTab from "./FavoriteTab";
@@ -8,6 +10,7 @@ import { useOnClickOutside } from "./useOnClickOutside";
 const SlideModal = () => {
   const { menu, setMenu } = useHandleMenu();
   const { favoriteTab, setFavoriteTab, handleFavoriteTab } = useFavoriteTab();
+  const router = useRouter();
   const modalRef = useRef();
 
   useEffect(() => {
@@ -43,6 +46,19 @@ const SlideModal = () => {
     const { name } = event.currentTarget;
 
     setMenu(name);
+  };
+
+  const changeRouting = (address: string) => {
+    setMenu("none");
+
+    const addressArr = MENU.map((menu) => menu.address);
+    const currentAddress = router.asPath;
+
+    if (addressArr.includes(currentAddress)) {
+      router.push(address);
+    } else {
+      router.replace(address);
+    }
   };
 
   useOnClickOutside(modalRef, () => setMenu("none"));
@@ -81,12 +97,14 @@ const SlideModal = () => {
         <FavoriteTab
           favoriteTab={favoriteTab}
           handleFavoriteTabIndex={handleFavoriteTabIndex}
+          changeRouting={changeRouting}
         />
       )}
       {menu === "menu" && (
         <MenuTab
           favoriteTab={favoriteTab}
           handleFavoriteTabIndex={handleFavoriteTabIndex}
+          changeRouting={changeRouting}
         />
       )}
     </div>
