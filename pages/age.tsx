@@ -9,7 +9,7 @@ const indexNumber = 1;
 
 const Age = () => {
   const { heading, explain } = MENU[indexNumber];
-  const { formValue, handleFormValue, onSubmit, age } = useAgeFormData();
+  const { formValue, handleFormValue, onSubmit, convertAge } = useAgeFormData();
   const { year, month, day } = formValue;
   const dateArrRef = useRef([]);
 
@@ -19,6 +19,12 @@ const Age = () => {
   ) => {
     if (event.currentTarget.value.length === event.currentTarget.maxLength) {
       dateArrRef.current[index + 1].focus();
+    }
+  };
+
+  const checkEnter = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === "Enter") {
+      onSubmit(year + month + day);
     }
   };
 
@@ -73,11 +79,15 @@ const Age = () => {
             placeholder="DD"
             maxLength={2}
             min={1}
+            onKeyUp={checkEnter}
             max={getDaysInMonth(year, month)}
             onChange={handleFormValue}
             ref={(ref: any) => (dateArrRef.current[2] = ref)}
           />
         </div>
+        {convertAge.age === "error" && (
+          <p className="text-red-500">잘못된 날짜 형식입니다.</p>
+        )}
         <button
           className="px-8 py-2 rounded-lg border bg-fourthYellow"
           type="button"
@@ -86,11 +96,17 @@ const Age = () => {
           계산하기
         </button>
       </form>
-      {age && (
+      {convertAge.age && convertAge.age !== "error" && (
         <p>
-          오늘 기준으로 {year ? year : "YYYY"}년 {month ? month : "MM"}월{" "}
-          {day ? day : "DD"}일 생의 <br /> 만 나이는{" "}
-          <span className="font-bold">{age}</span>세 입니다.
+          오늘 기준으로{" "}
+          <span className="font-[900] text-mainBlue text-[20px]">
+            {convertAge.year}년 {convertAge.month}월 {convertAge.day}일
+          </span>{" "}
+          생의 <br /> 만 나이는{" "}
+          <span className="font-[900] text-mainBlue text-[20px]">
+            {convertAge.age}
+          </span>
+          세 입니다.
         </p>
       )}
     </main>

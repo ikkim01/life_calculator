@@ -10,7 +10,12 @@ export interface formType {
   };
   handleFormValue: (event: React.ChangeEvent<HTMLInputElement>) => void;
   onSubmit: (date: string) => void;
-  age: number | "";
+  convertAge: {
+    year: string;
+    month: string;
+    day: string;
+    age: number | "" | "error";
+  };
 }
 
 const useAgeFormData = create<formType>((set) => ({
@@ -32,15 +37,41 @@ const useAgeFormData = create<formType>((set) => ({
     }),
   onSubmit: () =>
     set((state) => {
-      return {
-        age: calculateAge(
-          state.formValue.year,
-          state.formValue.month,
-          state.formValue.day
-        ),
-      };
+      const stateYear = state.formValue.year;
+      const stateMonth = state.formValue.month;
+      const stateDay = state.formValue.day;
+
+      const convertCalculateAge = calculateAge(stateYear, stateMonth, stateDay);
+      if (!stateYear || !stateMonth || !stateDay) {
+        return {
+          convertAge: {
+            age: "error",
+            year: "",
+            month: "",
+            day: "",
+          },
+        };
+      } else if (!Number.isNaN(convertCalculateAge)) {
+        return {
+          convertAge: {
+            age: convertCalculateAge,
+            year: stateYear,
+            month: stateMonth,
+            day: stateDay,
+          },
+        };
+      } else {
+        return {
+          convertAge: {
+            age: "error",
+            year: "",
+            month: "",
+            day: "",
+          },
+        };
+      }
     }),
-  age: "",
+  convertAge: { year: "", month: "", day: "", age: "" },
 }));
 
 export default useAgeFormData;
