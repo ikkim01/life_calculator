@@ -32,7 +32,7 @@ const Age = () => {
     <main className="flex flex-col items-center space-y-7">
       <Header title={heading} explain={explain} />
       <Title title={heading} />
-      <h3>
+      <h3 className="text-center">
         오늘을 기준으로 <b>만 나이</b>를 계산합니다.
       </h3>
       <p className="px-5">
@@ -50,7 +50,7 @@ const Age = () => {
             pattern="\d*"
             placeholder="YYYY"
             maxLength={4}
-            min={1}
+            min={1900}
             max={2050}
             onChange={handleFormValue}
             onKeyUp={(event) => focusNextInput(event, 0)}
