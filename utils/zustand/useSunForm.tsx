@@ -15,10 +15,11 @@ export interface formType {
     month: string;
     day: string;
     date: string | "error";
+    plusDate: string;
   };
 }
 
-const useMoonFormData = create<formType>((set) => ({
+const useSunFormData = create<formType>((set) => ({
   formValue: { year: "", month: "", day: "" },
   handleFormValue: (event: React.ChangeEvent<HTMLInputElement>) =>
     set((state) => {
@@ -62,29 +63,43 @@ const useMoonFormData = create<formType>((set) => ({
             year: "",
             month: "",
             day: "",
+            plusDate: "",
           },
         };
       } else {
-        const lunarDay = dayCalcDisplay(stateYear, stateMonth, stateDay, 1);
+        const solarDay = dayCalcDisplay(stateYear, stateMonth, stateDay, 2);
 
         return {
           convertDate: {
             date:
-              lunarDay.year +
+              solarDay.year +
               "년 " +
-              (lunarDay.leapMonth ? "(윤)" : "") +
-              lunarDay.month +
+              (solarDay.leapMonth ? "(윤)" : "") +
+              solarDay.month +
               "월 " +
-              lunarDay.day +
+              solarDay.day +
               "일 ",
             year: stateYear,
             month: stateMonth,
             day: stateDay,
+            plusDate:
+              solarDay.plusYear +
+              "년 " +
+              solarDay.plusMonth +
+              "월 " +
+              solarDay.plusDay +
+              "일 ",
           },
         };
       }
     }),
-  convertDate: { year: "", month: "", day: "", date: "" },
+  convertDate: {
+    year: "",
+    month: "",
+    day: "",
+    date: "",
+    plusDate: "",
+  },
 }));
 
-export default useMoonFormData;
+export default useSunFormData;
