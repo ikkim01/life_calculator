@@ -10,6 +10,10 @@ module.exports = {
   ],
   theme: {
     extend: {
+      screens: {
+        mobile: { min: "0px", max: "670px" },
+        pc: "671px",
+      },
       colors: {
         mainBlue: "#30A2FF",
         secondSky: "#00C4FF",
@@ -17,6 +21,9 @@ module.exports = {
         fourthYellow: "#FFD966",
         grey: "#041C32",
         menuBackground: "#89CFFD",
+      },
+      gridTemplateColumns: {
+        indexCard: "repeat(auto-fill, minmax(200px, 1fr))",
       },
     },
   },

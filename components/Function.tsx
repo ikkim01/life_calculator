@@ -1,3 +1,14 @@
+export const copyUrl = (url: string) => {
+  const myUrl = document.location.href;
+  var copyText = document.createElement("textarea");
+  document.body.appendChild(copyText);
+  copyText.value = myUrl.slice(0, myUrl.length - 1) + url;
+  copyText.select();
+  document.execCommand("copy");
+  document.body.removeChild(copyText);
+  alert("클립보드에 주소가 복사되었습니다.");
+};
+
 /*  음력 달력 배열
      음력은 모든 달이 29일 ~ 30일 으로만 이루어짐
      음력에도 윤달이 있을 경우 2월에 1일이 추가되는 식이 아니라

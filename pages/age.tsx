@@ -6,9 +6,10 @@ import MENU from "../utils/data/MENU";
 import useAgeFormData from "../utils/zustand/useAgeFormData";
 
 const indexNumber = 1;
+const pageNumber = 0;
 
 const Age = () => {
-  const { heading, explain } = MENU[indexNumber];
+  const { heading, explain } = MENU[indexNumber].childMenu[pageNumber];
   const { formValue, handleFormValue, onSubmit, convertAge } = useAgeFormData();
   const { year, month, day } = formValue;
   const dateArrRef = useRef([]);

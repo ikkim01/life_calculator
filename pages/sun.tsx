@@ -5,10 +5,11 @@ import Title from "../components/Title";
 import MENU from "../utils/data/MENU";
 import useSunFormData from "../utils/zustand/useSunForm";
 
-const indexNumber = 3;
+const indexNumber = 1;
+const pageNumber = 2;
 
 const Sun = () => {
-  const { heading, explain } = MENU[indexNumber];
+  const { heading, explain } = MENU[indexNumber].childMenu[pageNumber];
   const { formValue, handleFormValue, onSubmit, convertDate } =
     useSunFormData();
   const { year, month, day } = formValue;
@@ -38,8 +39,10 @@ const Sun = () => {
         <br /> (1900년 ~ 2050년)
       </h3>
       <p className="px-5">
-        음력은 달이 지구를 한 바퀴 돌면서 초승달에서 상현달, 보름달, 하현달,
-        다시 그믐달로 변하는 주기를 날짜 표기에 사용한 것입니다.
+        태양의 황도상 운행, 즉 계절이 바뀌는 주기를 근거로 만들어진 달력. 현재
+        세계의 공통 달력으로서 시행되고 있는 그레고리력은 이것의 일종으로, 1년을
+        거의 태양년과 같게 한 것임. 1년을 365일, 4년마다 윤년을 두어 366일로
+        하고, 100년마다 윤년을 1회 줄이고, 400년에 윤년을 97회로 함.
       </p>
       <form className="flex flex-col space-y-5 w-full items-center">
         <div className="flex space-x-3">

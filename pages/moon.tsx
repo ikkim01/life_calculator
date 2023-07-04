@@ -5,10 +5,11 @@ import Title from "../components/Title";
 import MENU from "../utils/data/MENU";
 import useMoonFormData from "../utils/zustand/useMoonFormData";
 
-const indexNumber = 2;
+const indexNumber = 1;
+const pageNumber = 1;
 
 const Moon = () => {
-  const { heading, explain } = MENU[indexNumber];
+  const { heading, explain } = MENU[indexNumber].childMenu[pageNumber];
   const { formValue, handleFormValue, onSubmit, convertDate } =
     useMoonFormData();
   const { year, month, day } = formValue;

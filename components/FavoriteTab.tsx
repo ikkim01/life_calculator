@@ -1,4 +1,3 @@
-import { useRouter } from "next/router";
 import React from "react";
 import MENU from "../utils/data/MENU";
 
@@ -15,25 +14,33 @@ const FavoriteTab = (props: propsType) => {
     <aside className="flex flex-col space-y-1 w-full px-3">
       {favoriteTab.length !== 0 ? (
         favoriteTab.map((favorite) => {
-          const findMenu = MENU.find((menu) => menu.key === Number(favorite));
+          const findMenu = MENU.find((menu) =>
+            menu.childMenu.find((child) => child.key === favorite)
+          );
+          const menuIndex = findMenu?.childMenu.findIndex(
+            (child) => child.key === favorite
+          );
+
+          const data = findMenu.childMenu[menuIndex];
+
           return (
             <article
-              key={findMenu.key}
+              key={data.key}
               className="border w-full rounded-lg relative flex items-center"
             >
               <button
                 className="w-full text-start h-full px-5 py-3 text-grey rounded-lg bg-white"
-                onClick={() => changeRouting(findMenu.address)}
+                onClick={() => changeRouting(data.address)}
               >
-                {findMenu.heading}
+                {data.heading}
               </button>
               <button
                 className="absolute right-5"
                 onClick={handleFavoriteTabIndex}
-                name={String(findMenu.key)}
+                name={String(data.key)}
               >
                 <svg
-                  width="18px"
+                  width="27px"
                   height="27px"
                   viewBox="0 0 24 24"
                   fill="none"
@@ -80,7 +87,7 @@ const FavoriteTab = (props: propsType) => {
           );
         })
       ) : (
-        <div className="flex justify-center items-center h-[270px]">
+        <div className="flex justify-center items-center h-[200px]">
           <p className="px-5 py-3">즐겨찾기에 추가된 항목이 없습니다.</p>
         </div>
       )}

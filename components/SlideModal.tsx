@@ -5,10 +5,9 @@ import useFavoriteTab from "../utils/zustand/useFavoriteTab";
 import useHandleMenu from "../utils/zustand/useHandleMenu";
 import FavoriteTab from "./FavoriteTab";
 import MenuTab from "./MenuTab";
-import { useOnClickOutside } from "./useOnClickOutside";
 
-const SlideModal = () => {
-  const { menu, setMenu } = useHandleMenu();
+const SlideModal = ({ mainRef }) => {
+  const { menu, handleMenu, setMenuNone } = useHandleMenu();
   const { favoriteTab, setFavoriteTab, handleFavoriteTab } = useFavoriteTab();
   const router = useRouter();
   const modalRef = useRef();
@@ -31,27 +30,39 @@ const SlideModal = () => {
       }
     }
 
+    const listener = (
+      event: React.BaseSyntheticEvent | MouseEvent | TouchEvent
+    ) => {
+      if (mainRef.current && mainRef.current.contains(event.target)) {
+        setMenuNone();
+      }
+    };
+
+    document.addEventListener("mousedown", listener);
+    return () => {
+      document.removeEventListener("mousedown", listener);
+    };
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [mainRef.current]);
 
   const handleFavoriteTabIndex = (
     event: React.MouseEvent<HTMLButtonElement>
   ) => {
     const { name } = event.currentTarget;
-
+    console.log(name);
     handleFavoriteTab(name);
   };
 
-  const handleMenu = (event: React.MouseEvent<HTMLButtonElement>) => {
-    const { name } = event.currentTarget;
-
-    setMenu(name);
-  };
-
   const changeRouting = (address: string) => {
-    setMenu("none");
+    setMenuNone();
+    let addressArr = [];
 
-    const addressArr = MENU.map((menu) => menu.address);
+    MENU.map((menu) =>
+      menu.childMenu.map((child) => {
+        addressArr.push(child.address);
+      })
+    );
     const currentAddress = router.asPath;
 
     if (addressArr.includes(currentAddress)) {
@@ -61,12 +72,10 @@ const SlideModal = () => {
     }
   };
 
-  useOnClickOutside(modalRef, () => setMenu("none"));
-
   return (
     <div
       ref={modalRef}
-      className={`bg-menuBackground/90 fixed w-full bottom-[-450px] space-y-3 pt-3 pb-5 transition-all duration-1000 z-[1] h-[300px] flex flex-col items-center overflow-scroll ${
+      className={`bg-menuBackground/90 fixed w-full bottom-[-450px] space-y-3 pb-5 transition-all duration-500 z-[1] h-[300px] flex flex-col items-center overflow-scroll ${
         menu === "favorite" || menu === "menu"
           ? "translate-y-[-610px]"
           : "translate-y-[0px]"
@@ -75,7 +84,11 @@ const SlideModal = () => {
       <button
         name="none"
         onClick={handleMenu}
-        className={menu === "none" ? "hidden" : "w-full flex justify-center"}
+        className={
+          menu === "none"
+            ? "hidden"
+            : "w-full flex justify-center sticky top-0 z-[2] bg-menuBackground/90"
+        }
       >
         <svg
           width="35px"

@@ -2,13 +2,7 @@ import React from "react";
 import useHandleMenu from "../utils/zustand/useHandleMenu";
 
 const Nav = () => {
-  const { menu, setMenu } = useHandleMenu();
-
-  const handleMenu = (event: React.MouseEvent<HTMLButtonElement>) => {
-    const { name } = event.currentTarget;
-
-    setMenu(name);
-  };
+  const { menu, handleMenu } = useHandleMenu();
 
   return (
     <div className="fixed bottom-0 bg-fourthYellow text-grey w-screen flex flex-col h-40 z-[2]">
@@ -33,7 +27,7 @@ const Nav = () => {
             />
           </svg>
           <p
-            className={`${
+            className={`text-[20px] ${
               menu === "favorite" ? "text-mainBlue" : "text-grey"
             } select-none`}
           >
@@ -64,7 +58,7 @@ const Nav = () => {
             </g>
           </svg>
           <p
-            className={`${
+            className={`text-[20px] ${
               menu === "menu" ? "text-mainBlue" : "text-grey"
             } select-none`}
           >
