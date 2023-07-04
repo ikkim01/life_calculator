@@ -14,13 +14,13 @@ const Clock = () => {
   const { heading, explain } = MENU[indexNumber].childMenu[pageNumber];
   const { domain, currentDomain, serverTime } = useCheckServerClock();
 
-  const getServerData = async (domain: string) => {
-    const response = await axios.options(domain);
+  // const getServerData = async (domain: string) => {
+  //   const response = await axios.options(domain);
 
-    console.log(response.headers.date);
-  };
+  //   console.log(response.headers.date);
+  // };
 
-  getServerData("http://localhost:3000/");
+  // getServerData("http://localhost:3000/");
 
   // const { isLoading, isError, data } = useQuery(["getClock"], getClock(domain), {
   //   staleTime: Infinity,
