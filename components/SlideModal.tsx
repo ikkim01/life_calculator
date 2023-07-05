@@ -75,7 +75,7 @@ const SlideModal = ({ mainRef }) => {
   return (
     <div
       ref={modalRef}
-      className={`bg-menuBackground/90 fixed mobile:w-full smallPc:w-full pc:w-[450px] mobile:bottom-[-450px] smallPc:bottom-[-450px] space-y-3 pb-5 transition-transform duration-500 z-[1] h-[300px] flex mobile:flex-col smallPc:flex-col items-center overflow-scroll pc:right-[-450px] pc:top-0 pc:pt-[93.5px] pc:h-full ${
+      className={`bg-menuBackground/90 fixed mobile:w-full smallPc:w-full pc:w-[450px] mobile:bottom-[-450px] smallPc:bottom-[-450px] space-y-3 pb-5 transition-transform duration-500 z-[1] h-[300px] flex mobile:flex-col smallPc:flex-col mobile:items-center smallPc:items-center overflow-scroll pc:right-[-450px] pc:top-0 pc:pt-[93.5px] pc:h-full ${
         menu === "favorite" || menu === "menu"
           ? "mobile:translate-y-[-610px] smallPc:translate-y-[-610px] pc:translate-x-[-450px]"
           : "mobile:translate-y-[0px] smallPc:translate-y-[0px] pc:translate-x-0"
@@ -87,7 +87,7 @@ const SlideModal = ({ mainRef }) => {
         className={
           menu === "none"
             ? "hidden"
-            : "mobile:w-full smallPc:w-full flex justify-center mobile:sticky smallPc:sticky pc:relative mobile:top-0 smallPc:top-0 z-[2] bg-menuBackground/90 pc:left-0"
+            : "mobile:w-full smallPc:w-full flex justify-center mobile:sticky smallPc:sticky pc:relative mobile:top-0 smallPc:top-0 z-[2] bg-menuBackground/90 pc:left-0 pc:items-center"
         }
       >
         <svg
