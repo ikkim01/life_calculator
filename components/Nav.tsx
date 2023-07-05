@@ -5,7 +5,7 @@ const Nav = () => {
   const { menu, handleMenu } = useHandleMenu();
 
   return (
-    <div className="fixed bottom-0 bg-fourthYellow text-grey w-screen flex flex-col h-40 z-[2]">
+    <div className="fixed bottom-0 bg-fourthYellow text-grey w-screen flex flex-col h-40 z-[2] pc:hidden">
       <nav className="flex justify-between px-20 items-center h-20 border-b border-t shadow-[0_-20px_-13px_rgb(0,0,0,0.03)]">
         <button
           className="flex flex-col justify-center items-center button"

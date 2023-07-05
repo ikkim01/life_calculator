@@ -11,8 +11,9 @@ module.exports = {
   theme: {
     extend: {
       screens: {
-        mobile: { min: "0px", max: "670px" },
-        pc: "671px",
+        mobile: { min: "0px", max: "767px" },
+        smallPc: { min: "768px", max: "1068px" },
+        pc: { min: "1069px" },
       },
       colors: {
         mainBlue: "#30A2FF",

@@ -44,7 +44,7 @@ const Index = () => {
 
   const handleCardModal = (event: React.MouseEvent<HTMLButtonElement>) => {
     const { name, parentElement } = event.currentTarget;
-    console.log(event.currentTarget.parentElement);
+
     cardModal.name === name
       ? setCardModal({
           name: "",
@@ -65,15 +65,14 @@ const Index = () => {
   };
 
   return (
-    <main>
+    <main className="flex items-center flex-col w-full">
       <Header title={name} explain={explain} />
-      <Title title={name} />
-      <div className="flex flex-col space-y-10 py-3">
+      <div className="flex flex-col space-y-10 py-5 mobile:w-full smallPc:min-w-[768px] pc:min-w-[1100px] pc:pt-[93.5px]">
         {MENU.map((menu) => {
           if (menu.key !== "HOME") {
             return (
               <div key={menu.key} className="flex flex-col space-y-3">
-                <h2 className="flex space-x-5 items-center px-10 py-5 text-[30px]">
+                <h2 className="flex space-x-2 items-center px-10 py-10 text-[33px]">
                   <Image
                     src={menu.img}
                     alt={menu.explain}
@@ -81,7 +80,7 @@ const Index = () => {
                     height={35}
                     priority={true}
                   />
-                  <p>{menu.name}</p>
+                  <p className="">{menu.name}</p>
                 </h2>
                 <article className="grid-cols-indexCard w-full grid gap-5 px-10 place-items-center">
                   {menu.childMenu.map((child) => {
@@ -106,9 +105,9 @@ const Index = () => {
                               priority={true}
                             />
                           </div>
-                          <p className="border-t w-full py-5 text-grey rounded-b-lg text-[27px] text-start px-6">
+                          <h3 className="border-t w-full py-5 text-grey rounded-b-lg text-[27px] text-start px-6">
                             {child.heading}
-                          </p>
+                          </h3>
                         </button>
                         <div
                           className={`w-full h-full absolute top-0 ${

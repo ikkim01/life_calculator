@@ -11,7 +11,7 @@ const FavoriteTab = (props: propsType) => {
   const { favoriteTab, handleFavoriteTabIndex, changeRouting } = props;
 
   return (
-    <aside className="flex flex-col space-y-1 w-full px-3">
+    <aside className="flex flex-col space-y-1 w-full px-3 pc:h-full py-7 pc:pr-[20px]">
       {favoriteTab.length !== 0 ? (
         favoriteTab.map((favorite) => {
           const findMenu = MENU.find((menu) =>
