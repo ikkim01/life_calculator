@@ -1,7 +1,6 @@
 import React, { useRef } from "react";
 import { getDaysInMonth } from "../components/Function";
 import Header from "../components/Header";
-import Title from "../components/Title";
 import MENU from "../utils/data/MENU";
 import useAgeFormData from "../utils/zustand/useAgeFormData";
 
@@ -30,9 +29,9 @@ const Age = () => {
   };
 
   return (
-    <main className="flex flex-col items-center space-y-7">
+    <main className="flex flex-col items-center space-y-7 pt-navTop">
       <Header title={heading} explain={explain} />
-      <Title title={heading} />
+
       <h3 className="text-center">
         오늘을 기준으로 <b>만 나이</b>를 계산합니다.
       </h3>

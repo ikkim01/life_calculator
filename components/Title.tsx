@@ -1,8 +1,7 @@
 import Image from "next/image";
 import { useRouter } from "next/router";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect } from "react";
 import MENU from "../utils/data/MENU";
-import useFavoriteTab from "../utils/zustand/useFavoriteTab";
 import useHandleMenu from "../utils/zustand/useHandleMenu";
 import usePcNav from "../utils/zustand/usePcNav";
 
@@ -13,7 +12,6 @@ interface propsType {
 const Title = ({ title }: propsType) => {
   const { navMenu, setMenuNone, handlePcMenu } = usePcNav();
   const { menu, handleMenu } = useHandleMenu();
-  const { favoriteTab, handleFavoriteTab } = useFavoriteTab();
   const router = useRouter();
 
   useEffect(() => {
@@ -50,7 +48,6 @@ const Title = ({ title }: propsType) => {
     }
   };
 
-  console.log(navMenu);
   return (
     <header className="flex justify-between items-center h-[93.5px] px-[5vw] border-b text-[35px] text-grey bg-fourthYellow w-full mobile:px-5 relative z-[4] pc:fixed">
       <button onClick={() => router.push("/")}>
@@ -102,104 +99,8 @@ const Title = ({ title }: propsType) => {
               );
             }
           })}
-          {/* <li className="cursor-pointer h-full flex items-center hover:text-black">
-            <button name="FAVORITE" onClick={handleMenu}>
-              즐겨찾기
-            </button>
-{favoriteTab.length !== 0 ? (
-        favoriteTab.map((favorite) => {
-          const findMenu = MENU.find((menu) =>
-            menu.childMenu.find((child) => child.key === favorite)
-          );
-          const menuIndex = findMenu?.childMenu.findIndex(
-            (child) => child.key === favorite
-          );
-
-          const data = findMenu.childMenu[menuIndex];
-
-          return (
-            <article
-              key={data.key}
-              className="border w-full rounded-lg relative flex items-center"
-            >
-              <button
-                className="w-full text-start h-full px-5 py-3 text-grey rounded-lg bg-white"
-                onClick={() => changeRouting(data.address)}
-              >
-                {data.heading}
-              </button>
-              <button
-                className="absolute right-5"
-                onClick={handleFavoriteTabIndex}
-                name={String(data.key)}
-              >
-                <svg
-                  width="27px"
-                  height="27px"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M10 12V17"
-                    stroke="#041C32"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                  <path
-                    d="M14 12V17"
-                    stroke="#041C32"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                  <path
-                    d="M4 7H20"
-                    stroke="#041C32"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                  <path
-                    d="M6 10V18C6 19.6569 7.34315 21 9 21H15C16.6569 21 18 19.6569 18 18V10"
-                    stroke="#041C32"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                  <path
-                    d="M9 5C9 3.89543 9.89543 3 11 3H13C14.1046 3 15 3.89543 15 5V7H9V5Z"
-                    stroke="#041C32"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </button>
-            </article>
-          );
-        })
-      ) : (
-        <div className="flex justify-center items-center h-[200px]">
-          <p className="px-5 py-3">즐겨찾기에 추가된 항목이 없습니다.</p>
-        </div>
-      )}
-          </li> */}
         </ul>
       </nav>
-      {/* <button
-        name="favorite"
-        onClick={handleMenu}
-      >
-        <Image
-          src="/img/starIcon.svg"
-          alt="goHome"
-          width={35}
-          height={35}
-          priority={true}
-        />
-      </button> */}
       <div className="mobile:opacity-0 smallPc:opacity-0 w-[35px] flex items-center">
         <button
           className="mobile:hidden smallPc:hidden button"

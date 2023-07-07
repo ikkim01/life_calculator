@@ -1,6 +1,5 @@
 import React from "react";
 import Header from "../components/Header";
-import Title from "../components/Title";
 import MENU from "../utils/data/MENU";
 import useBankForm from "../utils/zustand/useBankFrom";
 
@@ -13,9 +12,8 @@ const Bank = () => {
   const { type, depositMoney, savingMoney, month, monthType } = bankInput;
 
   return (
-    <main className="flex flex-col items-center space-y-7">
+    <main className="flex flex-col items-center space-y-7 pt-navTop">
       <Header title={heading} explain={explain} />
-      <Title title={heading} />
       <h3 className="text-center">
         입력한 정보를 바탕으로 <b>예금 / 적금 총 금액,이자</b>를 계산합니다.
       </h3>

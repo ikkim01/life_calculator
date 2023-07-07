@@ -26,6 +26,9 @@ module.exports = {
       gridTemplateColumns: {
         indexCard: "repeat(auto-fill, minmax(200px, 1fr))",
       },
+      padding: {
+        navTop: "95.5px",
+      },
     },
   },
   plugins: [],
