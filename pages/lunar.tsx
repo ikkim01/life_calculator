@@ -2,15 +2,15 @@ import React, { useRef } from "react";
 import { getDaysInMonth } from "../components/Function";
 import Header from "../components/Header";
 import MENU from "../utils/data/MENU";
-import useMoonFormData from "../utils/zustand/useMoonFormData";
+import useLunarFormData from "../utils/zustand/useLunarFormData";
 
 const indexNumber = 1;
 const pageNumber = 1;
 
-const Moon = () => {
+const Lunar = () => {
   const { heading, explain } = MENU[indexNumber].childMenu[pageNumber];
   const { formValue, handleFormValue, onSubmit, convertDate } =
-    useMoonFormData();
+    useLunarFormData();
   const { year, month, day } = formValue;
   const dateArrRef = useRef([]);
 
@@ -112,4 +112,4 @@ const Moon = () => {
   );
 };
 
-export default Moon;
+export default Lunar;

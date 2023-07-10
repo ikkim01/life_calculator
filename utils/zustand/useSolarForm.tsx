@@ -19,7 +19,7 @@ export interface formType {
   };
 }
 
-const useSunFormData = create<formType>((set) => ({
+const useSolarFormData = create<formType>((set) => ({
   formValue: { year: "", month: "", day: "" },
   handleFormValue: (event: React.ChangeEvent<HTMLInputElement>) =>
     set((state) => {
@@ -102,4 +102,4 @@ const useSunFormData = create<formType>((set) => ({
   },
 }));
 
-export default useSunFormData;
+export default useSolarFormData;

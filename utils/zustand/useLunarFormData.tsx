@@ -18,7 +18,7 @@ export interface formType {
   };
 }
 
-const useMoonFormData = create<formType>((set) => ({
+const useLunarFormData = create<formType>((set) => ({
   formValue: { year: "", month: "", day: "" },
   handleFormValue: (event: React.ChangeEvent<HTMLInputElement>) =>
     set((state) => {
@@ -87,4 +87,4 @@ const useMoonFormData = create<formType>((set) => ({
   convertDate: { year: "", month: "", day: "", date: "" },
 }));
 
-export default useMoonFormData;
+export default useLunarFormData;

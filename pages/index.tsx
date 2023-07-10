@@ -105,7 +105,7 @@ const Index = () => {
                               priority={true}
                             />
                           </div>
-                          <h3 className="border-t w-full py-5 text-grey rounded-b-lg text-[27px] text-start px-6">
+                          <h3 className="border-t w-full py-5 text-grey rounded-b-lg text-[20px] text-start px-6">
                             {child.heading}
                           </h3>
                         </button>

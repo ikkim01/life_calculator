@@ -608,3 +608,29 @@ export const dayCalcDisplay = (
 
   return date;
 };
+
+export const convertImg = (file, format) => {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => {
+      let img = document.createElement("img");
+      img.onload = () => {
+        const canvas = document.createElement("canvas");
+        const ctx = canvas.getContext("2d");
+        canvas.width = img.width;
+        canvas.height = img.height;
+        ctx.drawImage(img, 0, 0);
+
+        canvas.toBlob((blob) => {
+          resolve(
+            new File([blob], file.name.replace(".png", `.${format}`), {
+              type: `image/${format}`,
+            })
+          );
+        }, `image/${format}`);
+      };
+      img.src = reader.result;
+    };
+    reader.readAsDataURL(file);
+  });
+};

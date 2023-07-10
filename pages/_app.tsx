@@ -7,6 +7,7 @@ import { useRouter } from "next/router";
 import useHandleMenu from "../utils/zustand/useHandleMenu";
 import Title from "../components/Title";
 import MENU from "../utils/data/MENU";
+import Custom404 from "./404";
 
 export default function App({ Component, pageProps }: AppProps) {
   const { setMenuNone } = useHandleMenu();
@@ -28,6 +29,14 @@ export default function App({ Component, pageProps }: AppProps) {
   );
 
   const data = findMenu?.childMenu[menuIndex];
+
+  if (!findMenu)
+    return (
+      <>
+        <Title title="오류 화면" />
+        <Custom404 />
+      </>
+    );
 
   return (
     <div className="flex h-auto min-h-screen flex-col relative overflow-hidden">

@@ -1,7 +1,7 @@
 import React from "react";
 
-const JpgToJpeg = () => {
+const ToJpg = () => {
   return <div></div>;
 };
 
-export default JpgToJpeg;
+export default ToJpg;

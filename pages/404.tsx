@@ -4,8 +4,7 @@ import Title from "../components/Title";
 
 const Custom404 = () => {
   return (
-    <main className="w-full h-full">
-      <Title title="오류 화면" />
+    <main className="w-full h-full pt-navTop">
       <article className="py-20 flex flex-col items-center justify-center space-y-10">
         <Image
           src="/img/404Icon.svg"
