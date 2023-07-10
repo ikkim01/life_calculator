@@ -9,7 +9,7 @@ const pageNumber = 1;
 const ToJpeg = () => {
   const { heading, explain } = MENU[indexNumber].childMenu[pageNumber];
   const { imgBlobs, handleImg } = useImgForm();
-  console.log(imgBlobs);
+
   return (
     <main className="flex flex-col items-center space-y-7 pt-navTop">
       <Header title={heading} explain={explain} />
@@ -37,14 +37,14 @@ const ToJpeg = () => {
           변환하기
         </button>
       </form>
-      {imgBlobs !== null &&
+      {/* {imgBlobs !== null &&
         imgBlobs.map((img, index) => (
           <div key={index}>
             <img src={img} alt={`업로드 이미지 ${index}`}>
               {img}
             </img>
           </div>
-        ))}
+        ))} */}
     </main>
   );
 };
