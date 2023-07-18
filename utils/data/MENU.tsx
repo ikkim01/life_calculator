@@ -65,13 +65,13 @@ const MENU: menuType[] = [
         address: "/bank",
         img: "/img/bankIcon.svg",
       },
-      {
-        key: "clock",
-        heading: "서버 시간 계산기",
-        explain: "해당 주소의 서버 시간을 알려줍니다.",
-        address: "/clock",
-        img: "/img/clockIcon.svg",
-      },
+      // {
+      //   key: "clock",
+      //   heading: "서버 시간 계산기",
+      //   explain: "해당 주소의 서버 시간을 알려줍니다.",
+      //   address: "/clock",
+      //   img: "/img/clockIcon.svg",
+      // },
     ],
   },
   {

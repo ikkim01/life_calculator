@@ -24,7 +24,7 @@ module.exports = {
         menuBackground: "#89CFFD",
       },
       gridTemplateColumns: {
-        indexCard: "repeat(auto-fill, minmax(200px, 1fr))",
+        indexCard: "repeat(auto-fill, minmax(210px, 1fr))",
       },
       padding: {
         navTop: "95.5px",

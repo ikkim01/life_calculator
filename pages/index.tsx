@@ -96,16 +96,16 @@ const Index = () => {
                             router.push(child.address)
                           }
                         >
-                          <div className="w-full max-h-[250px] bg-mainBlue/30 flex items-center justify-center text-[40px] p-7 rounded-t-lg">
+                          <div className="w-full min-h-[210px] bg-mainBlue/30 flex items-center justify-center text-[40px] p-7 rounded-t-lg">
                             <Image
                               src={child.img}
                               alt={child.heading}
-                              width={200}
-                              height={200}
+                              width={100}
+                              height={100}
                               priority={true}
                             />
                           </div>
-                          <h3 className="border-t w-full py-5 text-grey rounded-b-lg text-[20px] text-start px-6">
+                          <h3 className="border-t min-w-[220px] -w-full py-5 text-grey rounded-b-lg text-[20px] text-start px-6">
                             {child.heading}
                           </h3>
                         </button>
@@ -168,7 +168,7 @@ const Index = () => {
                             </li>
                           </ul>
                           <button
-                            className={`absolute right-6 bottom-[27px] ${
+                            className={`absolute right-4 bottom-[23px] ${
                               cardModal.name === child.heading
                                 ? "opacity-1"
                                 : "opacity-0"
@@ -187,7 +187,7 @@ const Index = () => {
                         </div>
                         {cardModal.name !== child.heading && (
                           <button
-                            className="absolute right-6 bottom-[27px]"
+                            className="absolute right-4 bottom-[23px]"
                             onClick={handleCardModal}
                             name={child.heading}
                             id={String(menu.key)}

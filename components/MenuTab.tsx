@@ -35,7 +35,9 @@ const MenuTab = (props: propsType) => {
                     priority={true}
                     className="svg-shadow"
                   />
-                  <p className="text-white text-shadow">{menu.name}</p>
+                  <p className="text-white text-shadow mobile:text-[25px]">
+                    {menu.name}
+                  </p>
                 </h2>
                 <input
                   type="checkbox"
@@ -88,7 +90,7 @@ const MenuTab = (props: propsType) => {
                   }`}
                 >
                   <button
-                    className={`w-full text-start h-full px-5 py-3 text-grey rounded-lg bg-white ${
+                    className={`w-full text-start h-full px-5 py-3 text-grey rounded-lg bg-white mobile:text-[20px] ${
                       menu.key !== "HOME"
                         ? !toggleMenu.includes(menu.key)
                           ? ""

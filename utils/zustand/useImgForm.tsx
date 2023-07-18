@@ -1,39 +1,100 @@
-import axios from "axios";
 import React from "react";
 import { create } from "zustand";
-// import { convertImg } from "../../components/Function";
+import { convertImg } from "../../components/Function";
+
+type imgType = {
+  previewFileData: File;
+  preview: string;
+  name: string;
+  fileData: File;
+};
 
 interface menuType {
-  imgBlobs: any[] | null;
+  imgBlobs: imgType[];
   handleImg: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  handleImgFromDrop: (files: FileList) => void;
+  checkedFiles: string[];
+  handleChecked: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  handleAllChecked: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const useImgForm = create<menuType>((set) => ({
-  imgBlobs: null,
-  handleImg: (event) =>
+  imgBlobs: [],
+  handleImg: async (event) => {
+    const files = event.target.files;
+    const fileArr = [];
+
+    const awaitFileArr = await Promise.all(
+      Array.from(files).map(async (file) => {
+        const convertFile = await convertImg(file, "jpeg");
+        return { convertFile, file };
+      })
+    );
+
+    awaitFileArr.map((files: { convertFile: File; file: File }) => {
+      const fileURL = URL.createObjectURL(files.file);
+
+      fileArr.push({
+        previewFileData: files.file,
+        preview: fileURL,
+        name: files.convertFile.name,
+        fileData: files.convertFile,
+      });
+    });
+
     set((state) => {
-      //   const files = event.target.files;
-      //   const copyArr = state.imgBlobs === null ? [] : [...state.imgBlobs];
+      const copyArr = [...state.imgBlobs];
 
-      //   if (files.length === 1) {
-      //     const img = files[0];
+      return {
+        imgBlobs: copyArr.length === 0 ? fileArr : copyArr.concat(fileArr),
+      };
+    });
+  },
+  handleImgFromDrop: async (files) => {
+    const fileArr = [];
 
-      //     const data = convertImg(img, "jpeg");
-      //     data.then((res) => copyArr.push(URL.createObjectURL(res)));
-      //   } else {
-      //     const promises = Array.from(files).map((file) =>
-      //       convertImg(file, "jpeg")
-      //     );
-      //     Promise.all(promises)
-      //       .then((results) => {
-      //         copyArr.concat(results);
-      //       })
-      //       .catch((error) => {
-      //         console.error(error);
-      //       });
-      //   }
+    const awaitFileArr = await Promise.all(
+      Array.from(files).map(async (file) => {
+        const convertFile = await convertImg(file, "jpeg");
+        return { convertFile, file };
+      })
+    );
 
-      return { imgBlobs: [] };
+    awaitFileArr.map((files: { convertFile: File; file: File }) => {
+      const fileURL = URL.createObjectURL(files.file);
+
+      fileArr.push({
+        previewFileData: files.file,
+        preview: fileURL,
+        name: files.convertFile.name,
+        fileData: files.convertFile,
+      });
+    });
+
+    set((state) => {
+      const copyArr = [...state.imgBlobs];
+
+      return {
+        imgBlobs: copyArr.length === 0 ? fileArr : copyArr.concat(fileArr),
+      };
+    });
+  },
+  checkedFiles: [],
+  handleChecked: (event) =>
+    set((state) => {
+      const copyArr = [...state.checkedFiles];
+      const { name } = event.currentTarget;
+
+      copyArr.includes(name)
+        ? copyArr.splice(copyArr.indexOf(name), 1)
+        : copyArr.push(name);
+      return { checkedFiles: copyArr };
+    }),
+  handleAllChecked: (event) =>
+    set((state) => {
+      const { checked } = event.currentTarget;
+      const checkedArr = state.imgBlobs.map((img) => img.name);
+      return { checkedFiles: checked ? checkedArr : [] };
     }),
 }));
 
