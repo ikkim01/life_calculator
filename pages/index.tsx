@@ -90,7 +90,8 @@ const Index = () => {
                         className="relative flex max-w-[350px] pc:hover:translate-y-[5px] pc:transition-all pac:duration-50"
                       >
                         <button
-                          className={`flex flex-col w-full items-center rounded-lg border shadow-lg `}
+                          className={`flex flex-col w-full items-center rounded-lg border shadow-lg`}
+                          name={child.heading}
                           onClick={() =>
                             cardModal.name !== child.heading &&
                             router.push(child.address)
@@ -155,6 +156,7 @@ const Index = () => {
                                     ? "translate-y-[-54px]"
                                     : "translate-y-0"
                                 }`}
+                                name="copyUrl"
                                 onClick={() => copyUrl(child.address)}
                               >
                                 <Image
@@ -190,7 +192,7 @@ const Index = () => {
                             className="absolute right-4 bottom-[23px]"
                             onClick={handleCardModal}
                             name={child.heading}
-                            id={String(menu.key)}
+                            id={menu.key + String(child.key)}
                           >
                             <Image
                               src="/img/dot3Icon.svg"

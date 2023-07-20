@@ -29,9 +29,8 @@ const Age = () => {
   };
 
   return (
-    <main className="flex flex-col items-center space-y-7 pt-navTop">
+    <main className="flex flex-col items-center space-y-7 pc:mt-navTop py-mainPadding pt-[50px]">
       <Header title={heading} explain={explain} />
-
       <h3 className="text-center">
         오늘을 기준으로 <b>만 나이</b>를 계산합니다.
       </h3>

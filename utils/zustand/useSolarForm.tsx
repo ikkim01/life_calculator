@@ -83,12 +83,14 @@ const useSolarFormData = create<formType>((set) => ({
             month: stateMonth,
             day: stateDay,
             plusDate:
-              solarDay.plusYear +
-              "년 " +
-              solarDay.plusMonth +
-              "월 " +
-              solarDay.plusDay +
-              "일 ",
+              solarDay.plusYear && solarDay.plusMonth && solarDay.plusDay
+                ? solarDay.plusYear +
+                  "년 " +
+                  solarDay.plusMonth +
+                  "월 " +
+                  solarDay.plusDay +
+                  "일 "
+                : "",
           },
         };
       }

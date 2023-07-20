@@ -67,3 +67,7 @@ input::-webkit-inner-spin-button {
   overflow: hidden;
   visibility: hidden;
 }
+
+.tableDragPage {
+  background-color: #000;
+}

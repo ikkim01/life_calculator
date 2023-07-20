@@ -8,15 +8,18 @@ import useHandleMenu from "../utils/zustand/useHandleMenu";
 import Title from "../components/Title";
 import MENU from "../utils/data/MENU";
 import Custom404 from "./404";
+import useImgForm from "../utils/zustand/useImgForm";
 
 export default function App({ Component, pageProps }: AppProps) {
   const { setMenuNone } = useHandleMenu();
+  const { resetState } = useImgForm();
 
   const mainRef = useRef();
   const router = useRouter();
 
   useEffect(() => {
     setMenuNone();
+    resetState();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router.asPath]);
 
@@ -39,9 +42,9 @@ export default function App({ Component, pageProps }: AppProps) {
     );
 
   return (
-    <div className="flex h-auto min-h-screen flex-col relative overflow-hidden">
+    <div className="flex h-auto min-h-screen flex-col relative overflow-hidden items-center">
       <Title title={data.heading} />
-      <div className="pb-40" ref={mainRef}>
+      <div className="pb-40 pc:min-w-[1100px] pc:max-w-[1100px]" ref={mainRef}>
         <Component {...pageProps} />
       </div>
       <Nav />

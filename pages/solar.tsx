@@ -28,9 +28,9 @@ const Solar = () => {
       onSubmit(year + month + day);
     }
   };
-
+  console.log(convertDate);
   return (
-    <main className="flex flex-col items-center space-y-7 pt-navTop">
+    <main className="flex flex-col items-center space-y-7 pc:mt-navTop py-mainPadding">
       <Header title={heading} explain={explain} />
       <h3 className="text-center">
         입력한 날짜를 양력으로 계산합니다.

@@ -27,7 +27,7 @@ const Clock = () => {
   // });
 
   return (
-    <main className="flex flex-col items-center space-y-7 pt-navTop">
+    <main className="flex flex-col items-center space-y-7 pc:mt-navTop py-mainPadding">
       <Header title={heading} explain={explain} />
       <h3 className="text-center">
         입력한 주소의 <b>서버시간</b>을 계산합니다.
