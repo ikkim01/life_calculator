@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import Header from "../components/Header";
-import Title from "../components/Title";
 import MENU from "../utils/data/MENU";
 import useFavoriteTab from "../utils/zustand/useFavoriteTab";
 import { copyUrl } from "../components/Function";
@@ -67,12 +66,12 @@ const Index = () => {
   return (
     <main className="flex items-center flex-col w-full">
       <Header title={name} explain={explain} />
-      <div className="flex flex-col space-y-10 py-5 mobile:w-full smallPc:min-w-[768px] pc:min-w-[1100px] pc:pt-[93.5px]">
+      <div className="flex flex-col space-y-10 py-5 mobile:w-full smallPc:min-w-full pc:min-w-[1100px] pc:pt-[93.5px]">
         {MENU.map((menu) => {
           if (menu.key !== "HOME") {
             return (
               <div key={menu.key} className="flex flex-col space-y-3">
-                <h2 className="flex space-x-2 items-center px-10 py-10 text-[33px]">
+                <h2 className="flex space-x-2 items-center pc:px-10 mobile:px-[15vw] smallPc:px-14 smallPc: pc:py-10 pc:text-[33px] mobile:py-2 mobile:text-[25px] smallPc:py-4">
                   <Image
                     src={menu.img}
                     alt={menu.explain}
@@ -80,7 +79,7 @@ const Index = () => {
                     height={35}
                     priority={true}
                   />
-                  <p className="">{menu.name}</p>
+                  <p>{menu.name}</p>
                 </h2>
                 <article className="grid-cols-indexCard w-full grid gap-5 px-10 place-items-center">
                   {menu.childMenu.map((child) => {
@@ -106,7 +105,7 @@ const Index = () => {
                               priority={true}
                             />
                           </div>
-                          <h3 className="border-t min-w-[220px] -w-full py-5 text-grey rounded-b-lg text-[20px] text-start px-6">
+                          <h3 className="border-t min-w-[240px] -w-full py-5 text-grey rounded-b-lg text-[20px] text-start px-6">
                             {child.heading}
                           </h3>
                         </button>

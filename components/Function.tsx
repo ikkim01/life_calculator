@@ -643,3 +643,37 @@ export const convertBytes = (bytes: number) => {
 
   return `${convertedValue} ${sizes[i]}`;
 };
+
+export const convertNumberToKorean = (num: string) => {
+  if (num == "0") return "영";
+  var number = ["영", "일", "이", "삼", "사", "오", "육", "칠", "팔", "구"];
+  var unit = ["", "만", "억", "조"];
+  var smallUnit = ["천", "백", "십", ""];
+  var result = [];
+  var unitCnt = Math.ceil(num.length / 4);
+  num = num.padStart(unitCnt * 4, "0");
+  var regexp = /[\w\W]{4}/g;
+  var array = num.match(regexp);
+
+  if (array) {
+    for (var i = array.length - 1, unitCnt = 0; i >= 0; i--, unitCnt++) {
+      var hanValue = _makeHan(array[i]);
+      if (hanValue == "") continue;
+      result.unshift(hanValue + unit[unitCnt]);
+    }
+  }
+
+  function _makeHan(text: any) {
+    var str = "";
+    for (var i = 0; i < text.length; i++) {
+      var num = text[i];
+      if (num == "0")
+        //0은 읽지 않는다
+        continue;
+      str += number[num] + smallUnit[i];
+    }
+    return str;
+  }
+
+  return result.join("");
+};

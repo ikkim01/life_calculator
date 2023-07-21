@@ -49,7 +49,7 @@ const Title = ({ title }: propsType) => {
   };
 
   return (
-    <header className="flex justify-between items-center h-[93.5px] px-[5vw] border-b text-[26px] text-grey bg-fourthYellow w-full mobile:px-5 relative z-[4] pc:fixed">
+    <header className="flex justify-between items-center pc:h-[93.5px] mobile:py-3 smallPc:py-5 px-[5vw] border-b text-[26px] text-grey bg-fourthYellow w-full mobile:px-5 relative z-[4] pc:fixed">
       <button onClick={() => router.push("/")}>
         <Image
           src="/img/homeIcon.svg"
@@ -77,12 +77,12 @@ const Title = ({ title }: propsType) => {
                     {menu.name}
                   </button>
                   {navMenu.name === menu.key && (
-                    <ul className="absolute top-[80px] text-[18px] flex w-fit px-5 bg-black rounded-full space-x-4">
+                    <ul className="absolute top-[80px] text-[18px] flex w-fit px-5 bg-gray-700 py-2 rounded-full space-x-4">
                       {menu.key !== "HOME" &&
                         menu.childMenu.map((child) => (
                           <li
                             key={child.key}
-                            className="text-white non-hover-bold hover:font-bold cursor-pointer"
+                            className="text-white non-hover-bold hover:font-[400] cursor-pointer"
                             title={child.heading}
                           >
                             <button

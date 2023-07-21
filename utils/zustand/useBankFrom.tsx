@@ -3,12 +3,17 @@ import { create } from "zustand";
 export interface tabType {
   bankInput: {
     type: "deposit" | "savings";
-    depositMoney: number | "";
-    savingMoney: number | "";
-    month: number | "";
-    monthType: "simple" | "compound";
+    depositMoney: string;
+    savingMoney: string;
+    month: string;
+    rate: string;
+    monthType: "simple" | "monthCompound" | "yearCompound";
+    interestType: "discount" | "normal";
   };
   handleFormValue: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  handleInputValueToLocaleString: (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => void;
 }
 
 const useBankForm = create<tabType>((set) => ({
@@ -17,9 +22,24 @@ const useBankForm = create<tabType>((set) => ({
     depositMoney: "",
     savingMoney: "",
     month: "",
+    rate: "",
     monthType: "simple",
+    interestType: "normal",
   },
   handleFormValue: (event: React.ChangeEvent<HTMLInputElement>) =>
+    set((state) => {
+      const { name, value } = event.target;
+
+      return {
+        bankInput: {
+          ...state.bankInput,
+          [name]: event.target.value,
+        },
+      };
+    }),
+  handleInputValueToLocaleString: (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) =>
     set((state) => {
       const { name, value } = event.target;
       const { maxLength, max } = event.target;
@@ -32,7 +52,16 @@ const useBankForm = create<tabType>((set) => ({
         event.target.value = max;
       }
 
-      return { bankInput: { ...state.bankInput, [name]: event.target.value } };
+      if (value.includes(",")) {
+        event.target.value = value.replace(/,/g, "");
+      }
+
+      return {
+        bankInput: {
+          ...state.bankInput,
+          [name]: Number(event.target.value).toLocaleString(),
+        },
+      };
     }),
 }));
 

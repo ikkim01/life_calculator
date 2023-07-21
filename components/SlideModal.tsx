@@ -50,7 +50,7 @@ const SlideModal = ({ mainRef }) => {
     event: React.MouseEvent<HTMLButtonElement>
   ) => {
     const { name } = event.currentTarget;
-    console.log(name);
+
     handleFavoriteTab(name);
   };
 

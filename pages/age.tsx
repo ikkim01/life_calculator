@@ -34,10 +34,11 @@ const Age = () => {
       <h3 className="text-center">
         오늘을 기준으로 <b>만 나이</b>를 계산합니다.
       </h3>
-      <p className="px-5">
-        만 나이는 태어날 때 0세이며 다음 해 생일이 되는 날부터 1세로 계산하는
-        나이이며 국제표준인 나이입니다. 실제로 태어나서 살아온 날에 제일
-        근접하는 나이 셈법입니다.
+      <p className="px-5 text-[15px]">
+        만 나이란 태어난 날짜를 기준으로 현재 날짜까지 몇 살인지를 나타내는 나이
+        계산 방법입니다. 태어난 날짜로부터 다음 해 생일이 지난 후 1세로 계산하여
+        만 나이를 구합니다. 이 방법은 국제적으로 널리 사용되는 표준적인 나이
+        계산 방법입니다.
       </p>
       <form className="flex flex-col space-y-5 w-full items-center">
         <div className="flex space-x-3">

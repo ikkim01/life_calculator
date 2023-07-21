@@ -44,7 +44,10 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <div className="flex h-auto min-h-screen flex-col relative overflow-hidden items-center">
       <Title title={data.heading} />
-      <div className="pb-40 pc:min-w-[1100px] pc:max-w-[1100px]" ref={mainRef}>
+      <div
+        className="pb-40 pc:min-w-[1100px] pc:max-w-[1100px] mobile:w-full smallPc:w-full"
+        ref={mainRef}
+      >
         <Component {...pageProps} />
       </div>
       <Nav />

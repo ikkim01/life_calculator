@@ -1,3 +1,5 @@
+import Image from "next/image";
+import { useRouter } from "next/router";
 import React from "react";
 import MENU from "../utils/data/MENU";
 
@@ -9,9 +11,33 @@ interface propsType {
 
 const FavoriteTab = (props: propsType) => {
   const { favoriteTab, handleFavoriteTabIndex, changeRouting } = props;
+  const router = useRouter();
+  const findMenu = MENU.find((menu) =>
+    menu.childMenu.find((child) => child.address === router.asPath)
+  );
+  const menuIndex = findMenu?.childMenu.findIndex(
+    (child) => child.address === router.asPath
+  );
+  const data = findMenu?.childMenu[menuIndex];
 
   return (
-    <aside className="flex flex-col space-y-3 w-full px-3 pc:h-max py-7 pc:pr-[20px]">
+    <aside className="flex flex-col space-y-3 w-full px-3 pc:h-max pc:pr-[20px]">
+      {router.asPath !== "/" && data && !favoriteTab.includes(data.key) && (
+        <button
+          className="flex items-center justify-center space-x-3 text-white text-shadow mobile:text-[25px]"
+          onClick={handleFavoriteTabIndex}
+          name={String(data.key)}
+        >
+          <Image
+            src="/img/PLUSICONWHITE.svg"
+            alt="plusIcon"
+            width={30}
+            height={30}
+            className="svg-shadow"
+          />
+          <p>현재 페이지 즐겨찾기 추가</p>
+        </button>
+      )}
       {favoriteTab.length !== 0 ? (
         favoriteTab.map((favorite) => {
           const findMenu = MENU.find((menu) =>
@@ -87,8 +113,8 @@ const FavoriteTab = (props: propsType) => {
           );
         })
       ) : (
-        <div className="flex justify-center items-center h-[200px]">
-          <p className="px-5 py-3">즐겨찾기에 추가된 항목이 없습니다.</p>
+        <div className="flex justify-center items-center">
+          <p className="px-5 pt-16">즐겨찾기에 추가된 항목이 없습니다.</p>
         </div>
       )}
     </aside>

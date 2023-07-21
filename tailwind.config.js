@@ -22,7 +22,7 @@ module.exports = {
         menuBackground: "#89CFFD",
       },
       gridTemplateColumns: {
-        indexCard: "repeat(auto-fill, minmax(210px, 1fr))",
+        indexCard: "repeat(auto-fill, minmax(230px, 1fr))",
       },
       padding: {
         mainPadding: "30px",
