@@ -31,15 +31,15 @@ const Age = () => {
   return (
     <main className="flex flex-col items-center space-y-7 pc:mt-navTop py-mainPadding pt-[50px]">
       <Header title={heading} explain={explain} />
-      <h3 className="text-center">
+      <h1 className="text-center">
         오늘을 기준으로 <b>만 나이</b>를 계산합니다.
-      </h3>
-      <p className="px-5 text-[15px]">
+      </h1>
+      <h2 className="px-5 text-[15px]">
         만 나이란 태어난 날짜를 기준으로 현재 날짜까지 몇 살인지를 나타내는 나이
         계산 방법입니다. 태어난 날짜로부터 다음 해 생일이 지난 후 1세로 계산하여
         만 나이를 구합니다. 이 방법은 국제적으로 널리 사용되는 표준적인 나이
         계산 방법입니다.
-      </p>
+      </h2>
       <form className="flex flex-col space-y-5 w-full items-center">
         <div className="flex space-x-3">
           <input

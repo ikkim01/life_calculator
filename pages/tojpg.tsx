@@ -28,10 +28,10 @@ const ToJpg = () => {
   return (
     <main className="flex flex-col items-center space-y-7 pc:mt-navTop py-mainPadding">
       <Header title={heading} explain={explain} />
-      <h3 className="text-center">이미지 파일을 JPG로 변환합니다.</h3>
-      <p className="px-5 text-[15px]">
+      <h1 className="text-center">이미지 파일을 JPG로 변환합니다.</h1>
+      <h2 className="px-5 text-[15px]">
         이미지 파일을 업로드하여 JPG로 변환하여 다운받아 보세요!
-      </p>
+      </h2>
       <div className="flex justify-end w-full px-5">
         <button name="inputFile">
           <label

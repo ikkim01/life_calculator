@@ -32,14 +32,14 @@ const Lunar = () => {
   return (
     <main className="flex flex-col items-center space-y-7 pc:mt-navTop py-mainPadding">
       <Header title={heading} explain={explain} />
-      <h3 className="text-center">
+      <h1 className="text-center">
         입력한 날짜를 음력으로 계산합니다.
         <br /> (1900년 ~ 2050년)
-      </h3>
-      <p className="px-5 text-[15px]">
+      </h1>
+      <h2 className="px-5 text-[15px]">
         음력은 달이 지구를 한 바퀴 돌면서 초승달에서 상현달, 보름달, 하현달,
         다시 그믐달로 변하는 주기를 날짜 표기에 사용한 것입니다.
-      </p>
+      </h2>
       <form className="flex flex-col space-y-5 w-full items-center">
         <div className="flex space-x-3">
           <input

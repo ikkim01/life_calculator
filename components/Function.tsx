@@ -677,3 +677,132 @@ export const convertNumberToKorean = (num: string) => {
 
   return result.join("");
 };
+
+function calculateMonthlyInterest(principal, rate, months) {
+  let monthlyRate = rate / 12 / 100;
+  let totalAmount = principal * (Math.pow(1 + monthlyRate, months) - 1);
+  return totalAmount;
+}
+
+function calculateSimpleInterest(principal, rate, months) {
+  let totalAmount = principal * (1 + rate / 100);
+  return totalAmount - principal;
+}
+
+export const calculateDepositInterest = (
+  principal: string,
+  rateType: "simple" | "monthCompound",
+  rate: string,
+  months: string,
+  tax: "discount" | "normal"
+) => {
+  const numberPrincipal = Number(principal.replace(/,/g, ""));
+  const numberRate = Number(rate);
+  const numberMonth = Number(months);
+
+  let interest = 0;
+
+  switch (rateType) {
+    case "monthCompound":
+      interest = calculateMonthlyInterest(
+        numberPrincipal,
+        numberRate,
+        numberMonth
+      );
+      break;
+    case "simple":
+      interest = calculateSimpleInterest(
+        numberPrincipal,
+        numberRate,
+        numberMonth
+      );
+      break;
+  }
+
+  const taxRate = tax === "normal" ? 0.154 : 0.014;
+  const taxAmount = interest * taxRate;
+
+  return {
+    tax: Math.round(taxAmount),
+    interest: Math.round(interest),
+    money: numberPrincipal,
+  };
+};
+
+function calculateMonthlyCompoundInterest(
+  monthlyDeposit,
+  annualInterestRate,
+  months
+) {
+  const monthlyInterestRate = annualInterestRate / 12 / 100;
+
+  let interest = 0;
+  let balance = 0;
+
+  for (let i = 0; i < months; i++) {
+    balance += monthlyDeposit;
+    const monthlyInterest = balance * monthlyInterestRate;
+    balance += monthlyInterest;
+    interest += monthlyInterest;
+  }
+
+  return interest;
+}
+
+function calculateMonthlySimpleInterest(
+  monthlyDeposit,
+  annualInterestRate,
+  months
+) {
+  const monthlyInterestRate = annualInterestRate / 12 / 100;
+
+  let interest = 0;
+  let balance = 0;
+
+  for (let i = 0; i < months; i++) {
+    balance += monthlyDeposit;
+    interest += balance * monthlyInterestRate;
+  }
+
+  return interest;
+}
+
+export const calculateSavingsInterest = (
+  principal: string,
+  rateType: "simple" | "monthCompound",
+  rate: string,
+  months: string,
+  tax: "discount" | "normal"
+) => {
+  const numberPrincipal = Number(principal.replace(/,/g, ""));
+  const numberRate = Number(rate);
+  const numberMonth = Number(months);
+  const totalMoney = numberPrincipal * numberMonth;
+  let interest = 0;
+
+  switch (rateType) {
+    case "monthCompound":
+      interest = calculateMonthlyCompoundInterest(
+        numberPrincipal,
+        numberRate,
+        numberMonth
+      );
+      break;
+    case "simple":
+      interest = calculateMonthlySimpleInterest(
+        numberPrincipal,
+        numberRate,
+        numberMonth
+      );
+      break;
+  }
+
+  const taxRate = tax === "normal" ? 0.154 : 0.014;
+  const taxAmount = interest * taxRate;
+
+  return {
+    tax: Math.round(taxAmount),
+    interest: Math.round(interest),
+    money: totalMoney,
+  };
+};

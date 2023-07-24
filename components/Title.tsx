@@ -54,12 +54,16 @@ const Title = ({ title }: propsType) => {
         <Image
           src="/img/homeIcon.svg"
           alt="goHome"
-          width={40}
-          height={40}
+          width="0"
+          height="0"
+          sizes="100vw"
+          className="mobile:h-[30px] smallPc:h-[40px] pc:h-[40px] mobile:w-[30px] smallPc:w-[40px] pc:w-[40px]"
           priority={true}
         />
       </button>
-      <h1 className="pc:hidden">{title}</h1>
+      <h1 className="pc:hidden mobile:text-[20px] smallPc:text-[25px]">
+        {title}
+      </h1>
       <nav className="mobile:hidden smallPc:hidden h-full flex">
         <ul className="flex space-x-10 font-[300] h-full hover:text-gray-500">
           {MENU.map((menu) => {
@@ -106,6 +110,7 @@ const Title = ({ title }: propsType) => {
           className="mobile:hidden smallPc:hidden button"
           name="favorite"
           onClick={handleMenu}
+          area-label="openFavoriteMenu"
         >
           <svg
             width="35px"

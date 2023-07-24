@@ -28,10 +28,10 @@ const ToJpeg = () => {
   return (
     <main className="flex flex-col items-center space-y-7 pc:mt-navTop py-mainPadding">
       <Header title={heading} explain={explain} />
-      <h3 className="text-center">이미지 파일을 JPEG로 변환합니다.</h3>
-      <p className="px-5 text-[15px]">
+      <h1 className="text-center">이미지 파일을 JPEG로 변환합니다.</h1>
+      <h2 className="px-5 text-[15px]">
         이미지 파일을 업로드하여 JPEG로 변환하여 다운받아 보세요!
-      </p>
+      </h2>
       <div className="flex justify-end w-full px-5">
         <button name="inputFile">
           <label
@@ -43,7 +43,7 @@ const ToJpeg = () => {
         </button>
       </div>
       <section
-        className={`w-full relative h-[600px] overflow-y-auto ${
+        className={`w-full relative pc:h-[600px] smallPc:h-[300px] mobile:h-[300px] overflow-y-auto ${
           onDrag ? "" : "border"
         }`}
         onDragEnter={dragEnterHandler}
@@ -134,7 +134,7 @@ const ToJpeg = () => {
                   );
                 })
               ) : (
-                <tr className="h-[500px] ">
+                <tr className="pc:h-[500px] mobile:h-[300px] smallPc:h-[300px] ">
                   <td colSpan={4} align="center">
                     <button name="inputFile">
                       <label
