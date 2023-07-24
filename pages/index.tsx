@@ -121,6 +121,7 @@ const Index = () => {
                               <button
                                 className="rounded-full bg-[#eee] w-[40px] h-[40px] flex items-center justify-center absolute right-[18px] bottom-[80px]"
                                 name={String(child.key)}
+                                id={"addFavorite" + String(child.key)}
                                 area-label="addFavorite"
                                 onClick={handleFavoriteTabIndex}
                               >

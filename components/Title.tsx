@@ -108,6 +108,7 @@ const Title = ({ title }: propsType) => {
       <div className="mobile:opacity-0 smallPc:opacity-0 w-[35px] flex items-center">
         <button
           className="mobile:hidden smallPc:hidden button"
+          id="openFavoriteMenu"
           name="favorite"
           onClick={handleMenu}
           area-label="openFavoriteMenu"
