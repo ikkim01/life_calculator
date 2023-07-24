@@ -113,6 +113,7 @@ const Title = ({ title }: propsType) => {
           onClick={handleMenu}
           area-label="openFavoriteMenu"
         >
+          <p className="opacity-0 absolute h-0">즐겨찾기 메뉴 열기</p>
           <svg
             width="35px"
             height="35px"

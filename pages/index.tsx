@@ -125,6 +125,9 @@ const Index = () => {
                                 area-label="addFavorite"
                                 onClick={handleFavoriteTabIndex}
                               >
+                                <p className="opacity-0 absolute h-0">
+                                  즐겨찾기추가
+                                </p>
                                 <svg
                                   width="27px"
                                   height="27px"

@@ -90,6 +90,7 @@ const SlideModal = ({ mainRef }) => {
             : "mobile:w-full smallPc:w-full flex justify-center mobile:sticky smallPc:sticky pc:relative mobile:top-0 smallPc:top-0 z-[2] bg-menuBackground/90 pc:left-0 pc:items-center"
         }
       >
+        <p className="opacity-0 absolute h-0">슬라이드 메뉴 닫기</p>
         <svg
           width="35px"
           height="35px"
