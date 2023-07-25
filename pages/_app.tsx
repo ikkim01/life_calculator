@@ -9,6 +9,7 @@ import Title from "../components/Title";
 import MENU from "../utils/data/MENU";
 import Custom404 from "./404";
 import useImgForm from "../utils/zustand/useImgForm";
+import Footer from "../components/footer";
 
 export default function App({ Component, pageProps }: AppProps) {
   const { setMenuNone } = useHandleMenu();
@@ -45,10 +46,11 @@ export default function App({ Component, pageProps }: AppProps) {
     <div className="flex h-auto min-h-screen flex-col relative overflow-hidden items-center">
       <Title title={data.heading} />
       <div
-        className="pb-40 pc:min-w-[1100px] pc:max-w-[1100px] mobile:w-full smallPc:w-full"
+        className="mobile:pb-40 smallPc:pb-40 pc:min-w-[1100px] pc:max-w-[1100px] mobile:w-full smallPc:w-full"
         ref={mainRef}
       >
         <Component {...pageProps} />
+        <Footer />
       </div>
       <Nav />
       <SlideModal mainRef={mainRef} />

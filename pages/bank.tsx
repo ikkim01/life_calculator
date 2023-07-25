@@ -37,7 +37,7 @@ const Bank = () => {
       <h1 className="text-center">
         입력한 정보를 바탕으로 <b>예금 / 적금 총 금액,이자</b>를 계산합니다.
       </h1>
-      <h2 className="px-5 text-[15px]">
+      <h2 className="px-5 text-[15px] w-2/3">
         월 예치금, 예금, 금리를 입력하여 해당 기간동안 이자, 총 금액을
         확인해보세요.
       </h2>

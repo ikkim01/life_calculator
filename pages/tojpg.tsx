@@ -29,21 +29,12 @@ const ToJpg = () => {
     <main className="flex flex-col items-center space-y-7 pc:mt-navTop py-mainPadding">
       <Header title={heading} explain={explain} />
       <h1 className="text-center">이미지 파일을 JPG로 변환합니다.</h1>
-      <h2 className="px-5 text-[15px]">
-        이미지 파일을 업로드하여 JPG로 변환하여 다운받아 보세요!
+      <h2 className="px-5 text-[15px] w-2/3">
+        이미지 파일을 드래그하거나 업로드하여 간편하고 손쉽게 JPG로 변환하여
+        다운받아 보세요!
       </h2>
-      <div className="flex justify-end w-full px-5">
-        <button name="inputFile">
-          <label
-            htmlFor="imgFile"
-            className="w-full h-[50px] px-3 py-2 rounded-lg border bg-fourthYellow text-center text-[18px] cursor-pointer"
-          >
-            이미지 파일 업로드
-          </label>
-        </button>
-      </div>
       <section
-        className={`w-full relative h-[600px] overflow-y-auto ${
+        className={`w-full relative h-[300px] overflow-y-auto ${
           onDrag ? "" : "border"
         }`}
         onDragEnter={dragEnterHandler}
@@ -100,10 +91,7 @@ const ToJpg = () => {
               {imgBlobs.length !== 0 ? (
                 imgBlobs.map((img, index) => {
                   return (
-                    <tr
-                      key={index}
-                      className="p-3 mobile:h-[100px] smallPc:h-[100px] pc:h-[200px] border-b"
-                    >
+                    <tr key={index} className="p-3 border-b">
                       <td className="border-r" align="center">
                         <input
                           type="checkbox"
@@ -121,7 +109,7 @@ const ToJpg = () => {
                           width="0"
                           height="0"
                           sizes="100vw"
-                          className="mobile:h-[100px] smallPc:h-[100px] pc:h-[200px] mobile:w-[100px] smallPc:w-[100px] pc:w-[200px]"
+                          className="w-[100px] h-[100px]"
                         />
                       </td>
                       <td className="border-r" align="center">
@@ -134,14 +122,20 @@ const ToJpg = () => {
                   );
                 })
               ) : (
-                <tr className="h-[500px] ">
+                <tr className="h-[250px] ">
                   <td colSpan={4} align="center">
                     <button name="inputFile">
                       <label
                         htmlFor="imgFile"
-                        className="text-[20px] cursor-pointer"
+                        className="text-[20px] cursor-pointer flex space-x-5"
                       >
-                        파일을 업로드해주세요.
+                        <Image
+                          src="/img/plusIcon.svg"
+                          alt="plusIcon"
+                          width={30}
+                          height={30}
+                        />
+                        <p>파일을 마우스로 끌어 오세요</p>
                       </label>
                     </button>
                   </td>
@@ -151,7 +145,13 @@ const ToJpg = () => {
           </table>
         )}
       </section>
-      <div className="w-full flex justify-center">
+      <div className="w-full flex justify-center space-x-5">
+        <button
+          name="inputFile"
+          className="px-5 py-2 rounded-lg border bg-fourthYellow text-center text-[18px] cursor-pointer"
+        >
+          <label htmlFor="imgFile">이미지 파일 업로드</label>
+        </button>
         <button
           className="px-5 py-2 rounded-lg border bg-fourthYellow text-center text-[18px]"
           onClick={downloadFiles}

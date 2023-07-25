@@ -19,7 +19,7 @@ const MENU: menuType[] = [
     name: "메인 메뉴",
     img: "",
     explain:
-      "만 나이 계산, 양력 음력 변환, JPG -> JPEG 변환등 생활에 필요한 도구를 손쉽게 사용해보세요.",
+      "만 나이 계산, 양력 음력 변환, 은행 이자 계산, JPG -> JPEG 변환등 생활에 필요한 도구를 손쉽게 사용해보세요.",
     childMenu: [
       {
         key: "home",
@@ -40,7 +40,7 @@ const MENU: menuType[] = [
       {
         key: "age",
         heading: "만 나이 계산기",
-        explain: "날짜를 기준으로 만 나이를 계산해줍니다.",
+        explain: "현재 날짜를 기준으로 만 나이를 계산해줍니다.",
         address: "/age",
         img: "/img/ageIcon.svg",
       },
@@ -90,7 +90,8 @@ const MENU: menuType[] = [
       {
         key: "jpg",
         heading: "이미지를 JPG 변환",
-        explain: "이미지의 확장자를 JPG로 변환합니다.",
+        explain:
+          "이미지를 업로드 및 드래그 하여 압축 및 JPG로 변환된 이미지를 다운로드 해보세요.",
         address: "/tojpg",
         img: "/img/jpgIcon.svg",
       },
