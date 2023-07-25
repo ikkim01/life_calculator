@@ -27,33 +27,14 @@ export default function Document() {
         />
         <meta property="og:url" content="https://calc-convertor.com/" />
         <meta property="og:title" content="계산쿤" />
-        <meta property="og:image" content="/images/webImg.png" />
+        {/* <meta property="og:image" content="/images/webImg.png" /> */}
         <meta
           property="og:description"
           content="계산쿤을 이용해 손쉽게 변환 및 계신을 해보세요"
         />
         <meta property="og:site_name" content="계산쿤" />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="32x32"
-          href="/img/favicon/favicon-32x32.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="96x96"
-          href="/img/favicon/favicon-96x96.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="16x16"
-          href="/img/favicon/favicon-16x16.png"
-        />
-        <link rel="icon" href="img/favicon.ico" />
+        {/* <meta property="og:image:width" content="1200" /> */}
+        {/* <meta property="og:image:height" content="630" /> */}
       </Head>
       <body>
         <Main />

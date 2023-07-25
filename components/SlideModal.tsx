@@ -26,7 +26,7 @@ const SlideModal = ({ mainRef }) => {
           (cookie) => cookie.key === "favorite"
         );
 
-        findCookie.value && setFavoriteTab(findCookie.value.split(","));
+        findCookie?.value && setFavoriteTab(findCookie.value.split(","));
       }
     }
 
