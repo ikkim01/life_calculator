@@ -25,6 +25,11 @@ export default function Document() {
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8576721769362465"
           crossOrigin="anonymous"
         />
+        <script
+          defer
+          src="https://static.cloudflareinsights.com/beacon.min.js"
+          data-cf-beacon='{"token": "a334fc5cbf4e4dc39b4d4d72b22eb4a2"}'
+        />
         <meta property="og:url" content="https://calc-convertor.com/" />
         <meta property="og:title" content="계산쿤" />
         {/* <meta property="og:image" content="/images/webImg.png" /> */}

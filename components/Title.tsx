@@ -71,7 +71,7 @@ const Title = ({ title }: propsType) => {
               return (
                 <li
                   key={menu.key}
-                  className="h-full flex items-center hover:text-black w-[120px] select-none"
+                  className="h-full flex items-center hover:text-black w-[150px] select-none"
                 >
                   <button
                     name={menu.key}
