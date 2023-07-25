@@ -40,6 +40,11 @@ export default function Document() {
         <meta property="og:site_name" content="계산쿤" />
         <meta property="og:image:width" content="1024" />
         <meta property="og:image:height" content="1024" />
+        <meta name="robots" content="index,follow" />
+        <meta
+          name="keywords"
+          content="양력 변환, 음력 변환, 양력 음력 변환, 음력 양력 변환, 만 나이 계산, 만나이계산, 이자 계산, 적금이자계산, 예금 이자계산, 목돈, 이미지 변환, jpg변환, jpeg변환"
+        />
       </Head>
       <body>
         <Main />
