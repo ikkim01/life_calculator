@@ -66,7 +66,7 @@ const Index = () => {
   return (
     <main className="flex items-center flex-col w-full">
       <Header title={name} explain={explain} />
-      <div className="flex flex-col space-y-10 py-5 mobile:w-full smallPc:min-w-full pc:min-w-[1100px] pc:pt-[93.5px]">
+      <div className="flex flex-col space-y-10 py-5 mobile:w-full smallPc:min-w-full pc:min-w-full pc:pt-[93.5px]">
         {MENU.map((menu) => {
           if (menu.key !== "HOME") {
             return (
