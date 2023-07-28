@@ -9,7 +9,7 @@ import Title from "../components/Title";
 import MENU from "../utils/data/MENU";
 import Custom404 from "./404";
 import useImgForm from "../utils/zustand/useImgForm";
-import Footer from "../components/footer";
+import Footer from "../components/Footer";
 
 export default function App({ Component, pageProps }: AppProps) {
   const { setMenuNone } = useHandleMenu();
@@ -46,7 +46,7 @@ export default function App({ Component, pageProps }: AppProps) {
     <div className="flex h-auto min-h-screen flex-col relative overflow-hidden items-center">
       <Title title={data.heading} />
       <div className="flex space-x-3 justify-center w-full">
-        <div className="pc:border-r pc:w-2/12">
+        {/* <div className="pc:border-r pc:w-2/12">
           <script
             async
             src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8576721769362465"
@@ -61,26 +61,12 @@ export default function App({ Component, pageProps }: AppProps) {
             data-full-width-responsive="true"
           ></ins>
           <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-        </div>
+        </div> */}
         <div
           className="mobile:pb-40 smallPc:pb-40 pc:w-10/12 smallPc:w-full mobile:w-full"
           ref={mainRef}
         >
           <Component {...pageProps} />
-          <script
-            async
-            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8576721769362465"
-            crossOrigin="anonymous"
-          ></script>
-          <ins
-            className="adsbygoogle"
-            style={{ display: "block" }}
-            data-ad-client="ca-pub-8576721769362465"
-            data-ad-slot="9765758197"
-            data-ad-format="auto"
-            data-full-width-responsive="true"
-          ></ins>
-          <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
           <Footer />
         </div>
       </div>
