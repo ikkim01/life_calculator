@@ -9,7 +9,7 @@ import Title from "../components/Title";
 import MENU from "../utils/data/MENU";
 import Custom404 from "./404";
 import useImgForm from "../utils/zustand/useImgForm";
-import Footer from "../components/Footer";
+import FooterComponent from "../components/FooterComponent";
 
 export default function App({ Component, pageProps }: AppProps) {
   const { setMenuNone } = useHandleMenu();
@@ -67,7 +67,7 @@ export default function App({ Component, pageProps }: AppProps) {
           ref={mainRef}
         >
           <Component {...pageProps} />
-          <Footer />
+          <FooterComponent />
         </div>
       </div>
       <Nav />
