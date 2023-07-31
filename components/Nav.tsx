@@ -28,7 +28,7 @@ const Nav = () => {
             />
           </svg>
           <p
-            className={`text-[15px] ${
+            className={`text-s ${
               menu === "favorite" ? "text-mainBlue" : "text-grey"
             } select-none`}
           >
@@ -59,7 +59,7 @@ const Nav = () => {
             </g>
           </svg>
           <p
-            className={`text-[15px] ${
+            className={`text-s ${
               menu === "menu" ? "text-mainBlue" : "text-grey"
             } select-none`}
           >

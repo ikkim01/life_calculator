@@ -1,6 +1,5 @@
-import Image from "next/image";
 import React from "react";
-import Title from "../components/Title";
+import Image from "next/image";
 
 const Custom404 = () => {
   return (
@@ -13,7 +12,7 @@ const Custom404 = () => {
           height={200}
           priority={true}
         />
-        <p className="text-[25px] text-center">
+        <p className="text-ml text-center">
           잘못된 접근입니다.
           <br /> 주소를 다시 확인해주세요.
         </p>

@@ -37,7 +37,7 @@ const Bank = () => {
       <h1 className="text-center">
         입력한 정보를 바탕으로 <b>예금 / 적금 총 금액,이자</b>를 계산합니다.
       </h1>
-      <h2 className="px-5 text-[15px] w-2/3">
+      <h2 className="px-5 text-s w-2/3">
         월 예치금, 예금, 금리를 입력하여 해당 기간동안 이자, 총 금액을
         확인해보세요.
       </h2>
@@ -170,7 +170,7 @@ const Bank = () => {
                 value="normal"
               />
               <p>
-                일반과세 <span className="text-[15px]">(15.4%)</span>
+                일반과세 <span className="text-s">(15.4%)</span>
               </p>
             </label>
             <label htmlFor="discount" className="flex items-center space-x-3">
@@ -183,7 +183,7 @@ const Bank = () => {
                 value="discount"
               />
               <p>
-                세금우대 <span className="text-[15px]">(1.4%)</span>
+                세금우대 <span className="text-s">(1.4%)</span>
               </p>
             </label>
           </article>

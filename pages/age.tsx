@@ -34,7 +34,7 @@ const Age = () => {
       <h1 className="text-center">
         오늘을 기준으로 <b>만 나이</b>를 계산합니다.
       </h1>
-      <h2 className="px-5 text-[15px] w-2/3">
+      <h2 className="px-5 text-s w-2/3">
         만 나이란 태어난 날짜를 기준으로 현재 날짜까지 몇 살인지를 나타내는 나이
         계산 방법입니다. 태어난 날짜로부터 다음 해 생일이 지난 후 1세로 계산하여
         만 나이를 구합니다. 이 방법은 국제적으로 널리 사용되는 표준적인 나이
@@ -99,11 +99,11 @@ const Age = () => {
       {convertAge.age && convertAge.age !== "error" && (
         <p>
           오늘 기준으로{" "}
-          <span className="font-[900] text-mainBlue text-[20px]">
+          <span className="font-[900] text-mainBlue text-m">
             {convertAge.year}년 {convertAge.month}월 {convertAge.day}일
           </span>{" "}
           생의 <br /> 만 나이는{" "}
-          <span className="font-[900] text-mainBlue text-[20px]">
+          <span className="font-[900] text-mainBlue text-m">
             {convertAge.age}
           </span>
           세 입니다.

@@ -1,9 +1,9 @@
-import Image from "next/image";
 import React from "react";
-import { convertBytes } from "../components/Function";
-import Header from "../components/Header";
+import Image from "next/image";
 import MENU from "../utils/data/MENU";
 import useImgForm from "../utils/zustand/useImgForm";
+import { convertBytes } from "../components/Function";
+import Header from "../components/Header";
 
 const indexNumber = 2;
 const pageNumber = 1;
@@ -29,7 +29,7 @@ const ToJpg = () => {
     <main className="flex flex-col items-center space-y-7 pc:mt-navTop py-mainPadding">
       <Header title={heading} explain={explain} />
       <h1 className="text-center">이미지 파일을 JPG로 변환합니다.</h1>
-      <h2 className="px-5 text-[15px] w-2/3">
+      <h2 className="px-5 text-s w-2/3">
         이미지 파일을 드래그하거나 업로드하여 간편하고 손쉽게 JPG로 변환하여
         다운받아 보세요!
       </h2>
@@ -66,7 +66,7 @@ const ToJpg = () => {
             </div>
           </div>
         ) : (
-          <table className="rounded-lg w-full text-[12px] relative">
+          <table className="rounded-lg w-full text-xs relative">
             <thead className="sticky top-0 bg-white h-[40px] outline outline-gray-200">
               <tr>
                 <th className="border-r" align="center">
@@ -127,7 +127,7 @@ const ToJpg = () => {
                     <button name="inputFile">
                       <label
                         htmlFor="imgFile"
-                        className="text-[20px] cursor-pointer flex space-x-5"
+                        className="text-m cursor-pointer flex space-x-5"
                       >
                         <Image
                           src="/img/plusIcon.svg"
@@ -148,12 +148,12 @@ const ToJpg = () => {
       <div className="w-full flex justify-center space-x-5">
         <button
           name="inputFile"
-          className="px-5 py-2 rounded-lg border bg-fourthYellow text-center text-[18px] cursor-pointer"
+          className="px-5 py-2 rounded-lg border bg-fourthYellow text-center text-sm cursor-pointer"
         >
           <label htmlFor="imgFile">이미지 파일 업로드</label>
         </button>
         <button
-          className="px-5 py-2 rounded-lg border bg-fourthYellow text-center text-[18px]"
+          className="px-5 py-2 rounded-lg border bg-fourthYellow text-center text-sm"
           onClick={downloadFiles}
         >
           선택한 파일 다운로드

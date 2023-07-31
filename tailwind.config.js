@@ -30,6 +30,18 @@ module.exports = {
       margin: {
         navTop: "95.5px",
       },
+      fontSize: {
+        xs: "12px",
+        s: "15px",
+        sm: "18px",
+        m: "20px",
+        ml: "25px",
+        l: "33px",
+        xl: "40px",
+      },
+      width: {
+        slideWidth: "450px",
+      },
     },
   },
   plugins: [],

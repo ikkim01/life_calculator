@@ -1,8 +1,8 @@
 import React, { useRef } from "react";
-import { getDaysInMonth } from "../components/Function";
-import Header from "../components/Header";
 import MENU from "../utils/data/MENU";
 import useLunarFormData from "../utils/zustand/useLunarFormData";
+import Header from "../components/Header";
+import { getDaysInMonth } from "../components/Function";
 
 const indexNumber = 1;
 const pageNumber = 1;
@@ -36,7 +36,7 @@ const Lunar = () => {
         입력한 날짜를 음력으로 계산합니다.
         <br /> (1900년 ~ 2050년)
       </h1>
-      <h2 className="px-5 text-[15px] w-2/3">
+      <h2 className="px-5 text-s w-2/3">
         음력은 달이 지구를 한 바퀴 돌면서 초승달에서 상현달, 보름달, 하현달,
         다시 그믐달로 변하는 주기를 날짜 표기에 사용한 것입니다.
       </h2>
@@ -98,11 +98,11 @@ const Lunar = () => {
       </form>
       {convertDate.date && convertDate.date !== "error" && (
         <p>
-          <span className="font-[900] text-mainBlue text-[20px]">
+          <span className="font-[900] text-mainBlue text-m">
             {convertDate.year}년 {convertDate.month}월 {convertDate.day}일
           </span>{" "}
           의 <br /> 음력은{" "}
-          <span className="font-[900] text-mainBlue text-[20px]">
+          <span className="font-[900] text-mainBlue text-m">
             {convertDate.date}
           </span>
           입니다.

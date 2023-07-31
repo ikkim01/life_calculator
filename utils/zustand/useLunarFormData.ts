@@ -1,6 +1,5 @@
-import React from "react";
 import { create } from "zustand";
-import { calculateAge } from "../../components/Function";
+import { dayCalcDisplay } from "../../components/Function";
 
 export interface formType {
   formValue: {
@@ -10,15 +9,15 @@ export interface formType {
   };
   handleFormValue: (event: React.ChangeEvent<HTMLInputElement>) => void;
   onSubmit: (date: string) => void;
-  convertAge: {
+  convertDate: {
     year: string;
     month: string;
     day: string;
-    age: number | "" | "error";
+    date: string | "error";
   };
 }
 
-const useAgeFormData = create<formType>((set) => ({
+const useLunarFormData = create<formType>((set) => ({
   formValue: { year: "", month: "", day: "" },
   handleFormValue: (event: React.ChangeEvent<HTMLInputElement>) =>
     set((state) => {
@@ -33,6 +32,13 @@ const useAgeFormData = create<formType>((set) => ({
         event.target.value = event.target.max;
       }
 
+      if (
+        value.length === maxLength &&
+        Number(value) < Number(event.target.min)
+      ) {
+        event.target.value = event.target.min;
+      }
+
       return { formValue: { ...state.formValue, [name]: event.target.value } };
     }),
   onSubmit: () =>
@@ -41,37 +47,43 @@ const useAgeFormData = create<formType>((set) => ({
       const stateMonth = state.formValue.month;
       const stateDay = state.formValue.day;
 
-      const convertCalculateAge = calculateAge(stateYear, stateMonth, stateDay);
-      if (!stateYear || !stateMonth || !stateDay) {
+      if (
+        !stateYear ||
+        Number(stateYear) == 0 ||
+        !stateMonth ||
+        Number(stateMonth) == 0 ||
+        !stateDay ||
+        Number(stateDay) == 0
+      ) {
         return {
-          convertAge: {
-            age: "error",
+          convertDate: {
+            date: "error",
             year: "",
             month: "",
             day: "",
           },
         };
-      } else if (!Number.isNaN(convertCalculateAge)) {
+      } else {
+        const lunarDay = dayCalcDisplay(stateYear, stateMonth, stateDay, 1);
+
         return {
-          convertAge: {
-            age: convertCalculateAge,
+          convertDate: {
+            date:
+              lunarDay.year +
+              "년 " +
+              (lunarDay.leapMonth ? "(윤)" : "") +
+              lunarDay.month +
+              "월 " +
+              lunarDay.day +
+              "일 ",
             year: stateYear,
             month: stateMonth,
             day: stateDay,
           },
         };
-      } else {
-        return {
-          convertAge: {
-            age: "error",
-            year: "",
-            month: "",
-            day: "",
-          },
-        };
       }
     }),
-  convertAge: { year: "", month: "", day: "", age: "" },
+  convertDate: { year: "", month: "", day: "", date: "" },
 }));
 
-export default useAgeFormData;
+export default useLunarFormData;

@@ -1,17 +1,17 @@
-import "../styles/globals.css";
+import { useEffect, useRef } from "react";
 import type { AppProps } from "next/app";
+import { useRouter } from "next/router";
 import Nav from "../components/Nav";
 import SlideModal from "../components/SlideModal";
-import { useEffect, useRef } from "react";
-import { useRouter } from "next/router";
 import useHandleMenu from "../utils/zustand/useHandleMenu";
 import Title from "../components/Title";
 import MENU from "../utils/data/MENU";
 import Custom404 from "./404";
 import useImgForm from "../utils/zustand/useImgForm";
 import FooterComponent from "../components/FooterComponent";
+import "../styles/globals.css";
 
-export default function App({ Component, pageProps }: AppProps) {
+const App = ({ Component, pageProps }: AppProps) => {
   const { setMenuNone } = useHandleMenu();
   const { resetState } = useImgForm();
 
@@ -74,4 +74,6 @@ export default function App({ Component, pageProps }: AppProps) {
       <SlideModal mainRef={mainRef} />
     </div>
   );
-}
+};
+
+export default App;

@@ -1,5 +1,5 @@
-import { useRouter } from "next/router";
 import React, { useEffect, useRef } from "react";
+import { useRouter } from "next/router";
 import MENU from "../utils/data/MENU";
 import useFavoriteTab from "../utils/zustand/useFavoriteTab";
 import useHandleMenu from "../utils/zustand/useHandleMenu";
@@ -75,7 +75,7 @@ const SlideModal = ({ mainRef }) => {
   return (
     <div
       ref={modalRef}
-      className={`bg-menuBackground/90 fixed mobile:w-full smallPc:w-full pc:w-[450px] mobile:bottom-[-450px] smallPc:bottom-[-450px] space-y-3 mobile:pb-5 smallPc:pb-5 transition-transform duration-500 z-[1] h-[300px] flex mobile:flex-col smallPc:flex-col mobile:items-center smallPc:items-center overflow-scroll pc:right-[-450px] pc:top-0 pc:pt-[93.5px] pc:h-full ${
+      className={`bg-menuBackground/90 fixed mobile:w-full smallPc:w-full pc:w-slideWidth mobile:bottom-[-450px] smallPc:bottom-[-450px] space-y-3 mobile:pb-5 smallPc:pb-5 transition-transform duration-500 z-[1] h-[300px] flex mobile:flex-col smallPc:flex-col mobile:items-center smallPc:items-center overflow-scroll pc:right-[-450px] pc:top-0 pc:pt-[93.5px] pc:h-full ${
         menu === "favorite" || menu === "menu"
           ? "mobile:translate-y-[-530px] smallPc:translate-y-[-530px] pc:translate-x-[-450px]"
           : "mobile:translate-y-[0px] smallPc:translate-y-[0px] pc:translate-x-0"

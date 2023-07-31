@@ -1,6 +1,6 @@
-import Image from "next/image";
-import { useRouter } from "next/router";
 import React from "react";
+import { useRouter } from "next/router";
+import Image from "next/image";
 import MENU from "../utils/data/MENU";
 
 interface propsType {
@@ -24,7 +24,7 @@ const FavoriteTab = (props: propsType) => {
     <aside className="flex flex-col space-y-3 w-full px-3 pc:h-max pc:pr-[20px]">
       {router.asPath !== "/" && data && !favoriteTab.includes(data.key) && (
         <button
-          className="flex items-center justify-center space-x-3 text-white text-shadow mobile:text-[25px]"
+          className="flex items-center justify-center space-x-3 text-white text-shadow mobile:text-ml"
           onClick={handleFavoriteTabIndex}
           name={String(data.key)}
         >

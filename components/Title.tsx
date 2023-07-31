@@ -1,6 +1,6 @@
+import React, { useEffect } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import React, { useEffect } from "react";
 import MENU from "../utils/data/MENU";
 import useHandleMenu from "../utils/zustand/useHandleMenu";
 import usePcNav from "../utils/zustand/usePcNav";
@@ -61,9 +61,7 @@ const Title = ({ title }: propsType) => {
           priority={true}
         />
       </button>
-      <h1 className="pc:hidden mobile:text-[20px] smallPc:text-[25px]">
-        {title}
-      </h1>
+      <h1 className="pc:hidden mobile:text-m smallPc:text-ml">{title}</h1>
       <nav className="mobile:hidden smallPc:hidden h-full flex">
         <ul className="flex space-x-10 font-[300] h-full hover:text-gray-500">
           {MENU.map((menu) => {
@@ -81,7 +79,7 @@ const Title = ({ title }: propsType) => {
                     {menu.name}
                   </button>
                   {navMenu.name === menu.key && (
-                    <ul className="absolute top-[80px] text-[18px] flex w-fit px-5 bg-gray-700 py-2 rounded-full space-x-4">
+                    <ul className="absolute top-[80px] text-sm flex w-fit px-5 bg-gray-700 py-2 rounded-full space-x-4">
                       {menu.key !== "HOME" &&
                         menu.childMenu.map((child) => (
                           <li

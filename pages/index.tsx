@@ -1,11 +1,10 @@
-/* eslint-disable @next/next/no-img-element */
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import Header from "../components/Header";
+import { copyUrl } from "../components/Function";
 import MENU from "../utils/data/MENU";
 import useFavoriteTab from "../utils/zustand/useFavoriteTab";
-import { copyUrl } from "../components/Function";
 
 const indexNumber = 0;
 
@@ -71,7 +70,7 @@ const Index = () => {
           if (menu.key !== "HOME") {
             return (
               <div key={menu.key} className="flex flex-col space-y-3">
-                <h2 className="flex space-x-2 items-center pc:px-10 mobile:px-[15vw] smallPc:px-14 smallPc: pc:py-10 pc:text-[33px] mobile:py-2 mobile:text-[25px] smallPc:py-4">
+                <h2 className="flex space-x-2 items-center pc:px-10 mobile:px-[15vw] smallPc:px-14 smallPc: pc:py-10 pc:text-l mobile:py-2 mobile:text-ml smallPc:py-4">
                   <Image
                     src={menu.img}
                     alt={menu.explain}
@@ -96,7 +95,7 @@ const Index = () => {
                             router.push(child.address)
                           }
                         >
-                          <div className="w-full min-h-[210px] bg-mainBlue/30 flex items-center justify-center text-[40px] p-7 rounded-t-lg">
+                          <div className="w-full min-h-[210px] bg-mainBlue/30 flex items-center justify-center text-xl p-7 rounded-t-lg">
                             <Image
                               src={child.img}
                               alt={child.heading}
@@ -105,7 +104,7 @@ const Index = () => {
                               priority={true}
                             />
                           </div>
-                          <h3 className="border-t min-w-[240px] -w-full py-5 text-grey rounded-b-lg text-[20px] text-start px-6">
+                          <h3 className="border-t min-w-[240px] -w-full py-5 text-grey rounded-b-lg text-m text-start px-6">
                             {child.heading}
                           </h3>
                         </button>

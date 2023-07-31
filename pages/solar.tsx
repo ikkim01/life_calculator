@@ -1,8 +1,8 @@
 import React, { useRef } from "react";
-import { getDaysInLunarMonth } from "../components/Function";
-import Header from "../components/Header";
 import MENU from "../utils/data/MENU";
 import useSolarFormData from "../utils/zustand/useSolarForm";
+import { getDaysInLunarMonth } from "../components/Function";
+import Header from "../components/Header";
 
 const indexNumber = 1;
 const pageNumber = 2;
@@ -36,7 +36,7 @@ const Solar = () => {
         입력한 날짜를 양력으로 계산합니다.
         <br /> (1900년 ~ 2050년)
       </h1>
-      <h2 className="px-5 text-[15px] w-2/3">
+      <h2 className="px-5 text-s w-2/3">
         태양의 황도상 운행, 즉 계절이 바뀌는 주기를 근거로 만들어진 달력. 현재
         세계의 공통 달력으로서 시행되고 있는 그레고리력은 이것의 일종으로, 1년을
         거의 태양년과 같게 한 것임. 1년을 365일, 4년마다 윤년을 두어 366일로
@@ -100,11 +100,11 @@ const Solar = () => {
       </form>
       {convertDate.date && convertDate.date !== "error" && (
         <p>
-          <span className="font-[900] text-mainBlue text-[20px]">
+          <span className="font-[900] text-mainBlue text-m">
             {convertDate.year}년 {convertDate.month}월 {convertDate.day}일
           </span>{" "}
           의 <br /> 양력은{" "}
-          <span className="font-[900] text-mainBlue text-[20px]">
+          <span className="font-[900] text-mainBlue text-m">
             {convertDate.date}
           </span>
           입니다.
